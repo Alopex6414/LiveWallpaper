@@ -1,0 +1,693 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="DirectLibrary">
+      <UniqueIdentifier>{189daf2c-9cfb-41a8-9874-501bbe259657}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlumLibrary">
+      <UniqueIdentifier>{609842cf-fe25-4031-a65c-96991905ca9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CherryLibrary">
+      <UniqueIdentifier>{629919cf-0b31-4ef7-8a86-8688c90aa9c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary">
+      <UniqueIdentifier>{98b0f8c1-77f4-46f3-9eca-7b0c5823a92a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include">
+      <UniqueIdentifier>{c8add75d-e15c-4098-89f5-0e540dc42276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libavcodec">
+      <UniqueIdentifier>{bbfc3325-57eb-40ef-b26e-2c11020f2e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libavdevice">
+      <UniqueIdentifier>{166ad5b2-2671-478a-8b24-cd438ef6d1a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libavfilter">
+      <UniqueIdentifier>{1666844b-38d9-4101-8c44-4d4202a2fdf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libavformat">
+      <UniqueIdentifier>{65b85cb1-cd3a-464c-98ad-88132fc328b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libavutil">
+      <UniqueIdentifier>{1ae21076-885f-4b4e-99f1-2fefb6c05643}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libpostproc">
+      <UniqueIdentifier>{8059a50a-1270-4834-81de-4c0d7c037763}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libswresample">
+      <UniqueIdentifier>{4a3c8e9e-c87b-4996-8bb2-5e9d1c880431}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FFMpegLibrary\Include\libswscale">
+      <UniqueIdentifier>{d30f7c68-2f45-4bbe-bb00-53dc376c8a5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DirectLibrary\Include">
+      <UniqueIdentifier>{f8794b37-e626-4244-b0c9-711d9dbae49e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WinMain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WinProcess.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WinUtilities.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg.h">
+      <Filter>FFMpegLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\avcodec.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\avdct.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\avfft.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\d3d11va.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\dirac.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\dv_profile.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\dxva2.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\jni.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\mediacodec.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\qsv.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\vaapi.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\vda.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\vdpau.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\version.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\videotoolbox.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\vorbis_parser.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavcodec\xvmc.h">
+      <Filter>FFMpegLibrary\Include\libavcodec</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavdevice\avdevice.h">
+      <Filter>FFMpegLibrary\Include\libavdevice</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavdevice\version.h">
+      <Filter>FFMpegLibrary\Include\libavdevice</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavfilter\avfilter.h">
+      <Filter>FFMpegLibrary\Include\libavfilter</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavfilter\avfiltergraph.h">
+      <Filter>FFMpegLibrary\Include\libavfilter</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavfilter\buffersink.h">
+      <Filter>FFMpegLibrary\Include\libavfilter</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavfilter\buffersrc.h">
+      <Filter>FFMpegLibrary\Include\libavfilter</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavfilter\version.h">
+      <Filter>FFMpegLibrary\Include\libavfilter</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavformat\avformat.h">
+      <Filter>FFMpegLibrary\Include\libavformat</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavformat\avio.h">
+      <Filter>FFMpegLibrary\Include\libavformat</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavformat\version.h">
+      <Filter>FFMpegLibrary\Include\libavformat</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\adler32.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\aes.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\aes_ctr.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\attributes.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\audio_fifo.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\avassert.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\avconfig.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\avstring.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\avutil.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\base64.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\blowfish.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\bprint.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\bswap.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\buffer.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\camellia.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\cast5.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\channel_layout.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\common.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\cpu.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\crc.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\des.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\dict.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\display.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\downmix_info.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\error.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\eval.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\ffversion.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\fifo.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\file.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\frame.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hash.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hmac.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_cuda.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_d3d11va.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_drm.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_dxva2.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_qsv.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_vaapi.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_vdpau.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_videotoolbox.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\imgutils.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\intfloat.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\intreadwrite.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\lfg.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\log.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\lzo.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\macros.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\mastering_display_metadata.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\mathematics.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\md5.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\mem.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\motion_vector.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\murmur3.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\opt.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\parseutils.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\pixdesc.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\pixelutils.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\pixfmt.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\random_seed.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\rational.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\rc4.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\replaygain.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\ripemd.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\samplefmt.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\sha.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\sha512.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\spherical.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\stereo3d.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\tea.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\threadmessage.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\time.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\timecode.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\timestamp.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\tree.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\twofish.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\version.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libavutil\xtea.h">
+      <Filter>FFMpegLibrary\Include\libavutil</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libpostproc\postprocess.h">
+      <Filter>FFMpegLibrary\Include\libpostproc</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libpostproc\version.h">
+      <Filter>FFMpegLibrary\Include\libpostproc</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libswresample\swresample.h">
+      <Filter>FFMpegLibrary\Include\libswresample</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libswresample\version.h">
+      <Filter>FFMpegLibrary\Include\libswresample</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libswscale\swscale.h">
+      <Filter>FFMpegLibrary\Include\libswscale</Filter>
+    </ClInclude>
+    <ClInclude Include="FFMpeg\Include\libswscale\version.h">
+      <Filter>FFMpegLibrary\Include\libswscale</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\audiodefs.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\comdecl.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D2D1.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D2D1Helper.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D2DBaseTypes.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D2Derr.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3d9.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3d9caps.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3d9types.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D10.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D10_1.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D10_1shader.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D10effect.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3d10misc.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3d10sdklayers.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D10shader.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D11.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D11SDKLayers.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3D11Shader.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3Dcommon.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3Dcompiler.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DCSX.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9anim.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9core.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9effect.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9math.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9mesh.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9shader.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9shape.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9tex.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx9xof.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX10.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\d3dx10async.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX10core.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX10math.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX10mesh.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX10tex.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX11.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX11async.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX11core.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\D3DX11tex.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\Dcommon.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dinput.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dinputd.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dsconf.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dsetup.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dsound.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\DWrite.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dxdiag.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\DxErr.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dxfile.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\DXGI.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\DXGIFormat.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\DXGIType.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\dxsdkver.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\gameux.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\PIXPlugin.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\rmxfguid.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\rmxftmpl.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\rpcsal.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\X3DAudio.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\xact3.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\xact3d3.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\xact3wb.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\XAPO.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\XAPOBase.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\XAPOFX.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\XAudio2.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\XAudio2fx.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\XDSP.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\XInput.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\xma2defs.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectX\Include\xnamath.h">
+      <Filter>DirectLibrary\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveCore.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveCoreThread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LiveWallpaperCore.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="WinMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WinProcess.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="WinUtilities.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveCore.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveCoreThread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource\Icon\LiveCore64.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Resource\Icon\LiveCore32.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Resource\Icon\LiveCore128.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DirectX\Include\D3DX_DXGIFormatConvert.inl">
+      <Filter>DirectLibrary\Include</Filter>
+    </None>
+    <None Include="DirectX\Include\d3dx9math.inl">
+      <Filter>DirectLibrary\Include</Filter>
+    </None>
+    <None Include="DirectX\Include\D3DX10math.inl">
+      <Filter>DirectLibrary\Include</Filter>
+    </None>
+    <None Include="DirectX\Include\xnamathconvert.inl">
+      <Filter>DirectLibrary\Include</Filter>
+    </None>
+    <None Include="DirectX\Include\xnamathmatrix.inl">
+      <Filter>DirectLibrary\Include</Filter>
+    </None>
+    <None Include="DirectX\Include\xnamathmisc.inl">
+      <Filter>DirectLibrary\Include</Filter>
+    </None>
+    <None Include="DirectX\Include\xnamathvector.inl">
+      <Filter>DirectLibrary\Include</Filter>
+    </None>
+  </ItemGroup>
+</Project>

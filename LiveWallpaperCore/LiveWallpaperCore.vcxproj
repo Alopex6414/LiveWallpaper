@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{AA93DCBB-2161-4075-91A8-5BC1A2B2F636}</ProjectGuid>
+    <RootNamespace>LiveWallpaperCore</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)DirectX\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)DirectX\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(ProjectDir)DirectX\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)DirectX\Lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)\FFMpeg\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>$(ProjectDir)\FFMpeg\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)FFMpeg\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(ProjectDir)FFMpeg\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="DirectX\Include\audiodefs.h" />
+    <ClInclude Include="DirectX\Include\comdecl.h" />
+    <ClInclude Include="DirectX\Include\D2D1.h" />
+    <ClInclude Include="DirectX\Include\D2D1Helper.h" />
+    <ClInclude Include="DirectX\Include\D2DBaseTypes.h" />
+    <ClInclude Include="DirectX\Include\D2Derr.h" />
+    <ClInclude Include="DirectX\Include\D3D10.h" />
+    <ClInclude Include="DirectX\Include\D3D10effect.h" />
+    <ClInclude Include="DirectX\Include\d3d10misc.h" />
+    <ClInclude Include="DirectX\Include\d3d10sdklayers.h" />
+    <ClInclude Include="DirectX\Include\D3D10shader.h" />
+    <ClInclude Include="DirectX\Include\D3D10_1.h" />
+    <ClInclude Include="DirectX\Include\D3D10_1shader.h" />
+    <ClInclude Include="DirectX\Include\D3D11.h" />
+    <ClInclude Include="DirectX\Include\D3D11SDKLayers.h" />
+    <ClInclude Include="DirectX\Include\D3D11Shader.h" />
+    <ClInclude Include="DirectX\Include\d3d9.h" />
+    <ClInclude Include="DirectX\Include\d3d9caps.h" />
+    <ClInclude Include="DirectX\Include\d3d9types.h" />
+    <ClInclude Include="DirectX\Include\D3Dcommon.h" />
+    <ClInclude Include="DirectX\Include\D3Dcompiler.h" />
+    <ClInclude Include="DirectX\Include\D3DCSX.h" />
+    <ClInclude Include="DirectX\Include\D3DX10.h" />
+    <ClInclude Include="DirectX\Include\d3dx10async.h" />
+    <ClInclude Include="DirectX\Include\D3DX10core.h" />
+    <ClInclude Include="DirectX\Include\D3DX10math.h" />
+    <ClInclude Include="DirectX\Include\D3DX10mesh.h" />
+    <ClInclude Include="DirectX\Include\D3DX10tex.h" />
+    <ClInclude Include="DirectX\Include\D3DX11.h" />
+    <ClInclude Include="DirectX\Include\D3DX11async.h" />
+    <ClInclude Include="DirectX\Include\D3DX11core.h" />
+    <ClInclude Include="DirectX\Include\D3DX11tex.h" />
+    <ClInclude Include="DirectX\Include\d3dx9.h" />
+    <ClInclude Include="DirectX\Include\d3dx9anim.h" />
+    <ClInclude Include="DirectX\Include\d3dx9core.h" />
+    <ClInclude Include="DirectX\Include\d3dx9effect.h" />
+    <ClInclude Include="DirectX\Include\d3dx9math.h" />
+    <ClInclude Include="DirectX\Include\d3dx9mesh.h" />
+    <ClInclude Include="DirectX\Include\d3dx9shader.h" />
+    <ClInclude Include="DirectX\Include\d3dx9shape.h" />
+    <ClInclude Include="DirectX\Include\d3dx9tex.h" />
+    <ClInclude Include="DirectX\Include\d3dx9xof.h" />
+    <ClInclude Include="DirectX\Include\Dcommon.h" />
+    <ClInclude Include="DirectX\Include\dinput.h" />
+    <ClInclude Include="DirectX\Include\dinputd.h" />
+    <ClInclude Include="DirectX\Include\dsconf.h" />
+    <ClInclude Include="DirectX\Include\dsetup.h" />
+    <ClInclude Include="DirectX\Include\dsound.h" />
+    <ClInclude Include="DirectX\Include\DWrite.h" />
+    <ClInclude Include="DirectX\Include\dxdiag.h" />
+    <ClInclude Include="DirectX\Include\DxErr.h" />
+    <ClInclude Include="DirectX\Include\dxfile.h" />
+    <ClInclude Include="DirectX\Include\DXGI.h" />
+    <ClInclude Include="DirectX\Include\DXGIFormat.h" />
+    <ClInclude Include="DirectX\Include\DXGIType.h" />
+    <ClInclude Include="DirectX\Include\dxsdkver.h" />
+    <ClInclude Include="DirectX\Include\gameux.h" />
+    <ClInclude Include="DirectX\Include\PIXPlugin.h" />
+    <ClInclude Include="DirectX\Include\rmxfguid.h" />
+    <ClInclude Include="DirectX\Include\rmxftmpl.h" />
+    <ClInclude Include="DirectX\Include\rpcsal.h" />
+    <ClInclude Include="DirectX\Include\X3DAudio.h" />
+    <ClInclude Include="DirectX\Include\xact3.h" />
+    <ClInclude Include="DirectX\Include\xact3d3.h" />
+    <ClInclude Include="DirectX\Include\xact3wb.h" />
+    <ClInclude Include="DirectX\Include\XAPO.h" />
+    <ClInclude Include="DirectX\Include\XAPOBase.h" />
+    <ClInclude Include="DirectX\Include\XAPOFX.h" />
+    <ClInclude Include="DirectX\Include\XAudio2.h" />
+    <ClInclude Include="DirectX\Include\XAudio2fx.h" />
+    <ClInclude Include="DirectX\Include\XDSP.h" />
+    <ClInclude Include="DirectX\Include\XInput.h" />
+    <ClInclude Include="DirectX\Include\xma2defs.h" />
+    <ClInclude Include="DirectX\Include\xnamath.h" />
+    <ClInclude Include="FFMpeg.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\avcodec.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\avdct.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\avfft.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\d3d11va.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\dirac.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\dv_profile.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\dxva2.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\jni.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\mediacodec.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\qsv.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\vaapi.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\vda.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\vdpau.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\version.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\videotoolbox.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\vorbis_parser.h" />
+    <ClInclude Include="FFMpeg\Include\libavcodec\xvmc.h" />
+    <ClInclude Include="FFMpeg\Include\libavdevice\avdevice.h" />
+    <ClInclude Include="FFMpeg\Include\libavdevice\version.h" />
+    <ClInclude Include="FFMpeg\Include\libavfilter\avfilter.h" />
+    <ClInclude Include="FFMpeg\Include\libavfilter\avfiltergraph.h" />
+    <ClInclude Include="FFMpeg\Include\libavfilter\buffersink.h" />
+    <ClInclude Include="FFMpeg\Include\libavfilter\buffersrc.h" />
+    <ClInclude Include="FFMpeg\Include\libavfilter\version.h" />
+    <ClInclude Include="FFMpeg\Include\libavformat\avformat.h" />
+    <ClInclude Include="FFMpeg\Include\libavformat\avio.h" />
+    <ClInclude Include="FFMpeg\Include\libavformat\version.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\adler32.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\aes.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\aes_ctr.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\attributes.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\audio_fifo.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\avassert.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\avconfig.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\avstring.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\avutil.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\base64.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\blowfish.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\bprint.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\bswap.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\buffer.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\camellia.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\cast5.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\channel_layout.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\common.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\cpu.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\crc.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\des.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\dict.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\display.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\downmix_info.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\error.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\eval.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\ffversion.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\fifo.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\file.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\frame.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hash.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hmac.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_cuda.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_d3d11va.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_drm.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_dxva2.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_qsv.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_vaapi.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_vdpau.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\hwcontext_videotoolbox.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\imgutils.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\intfloat.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\intreadwrite.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\lfg.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\log.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\lzo.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\macros.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\mastering_display_metadata.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\mathematics.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\md5.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\mem.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\motion_vector.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\murmur3.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\opt.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\parseutils.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\pixdesc.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\pixelutils.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\pixfmt.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\random_seed.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\rational.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\rc4.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\replaygain.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\ripemd.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\samplefmt.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\sha.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\sha512.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\spherical.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\stereo3d.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\tea.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\threadmessage.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\time.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\timecode.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\timestamp.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\tree.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\twofish.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\version.h" />
+    <ClInclude Include="FFMpeg\Include\libavutil\xtea.h" />
+    <ClInclude Include="FFMpeg\Include\libpostproc\postprocess.h" />
+    <ClInclude Include="FFMpeg\Include\libpostproc\version.h" />
+    <ClInclude Include="FFMpeg\Include\libswresample\swresample.h" />
+    <ClInclude Include="FFMpeg\Include\libswresample\version.h" />
+    <ClInclude Include="FFMpeg\Include\libswscale\swscale.h" />
+    <ClInclude Include="FFMpeg\Include\libswscale\version.h" />
+    <ClInclude Include="LiveCore.h" />
+    <ClInclude Include="LiveCoreThread.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="WinMain.h" />
+    <ClInclude Include="WinProcess.h" />
+    <ClInclude Include="WinUtilities.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="LiveWallpaperCore.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LiveCore.cpp" />
+    <ClCompile Include="LiveCoreThread.cpp" />
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="WinProcess.cpp" />
+    <ClCompile Include="WinUtilities.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resource\Icon\LiveCore128.ico" />
+    <Image Include="Resource\Icon\LiveCore32.ico" />
+    <Image Include="Resource\Icon\LiveCore64.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DirectX\Include\D3DX10math.inl" />
+    <None Include="DirectX\Include\d3dx9math.inl" />
+    <None Include="DirectX\Include\D3DX_DXGIFormatConvert.inl" />
+    <None Include="DirectX\Include\xnamathconvert.inl" />
+    <None Include="DirectX\Include\xnamathmatrix.inl" />
+    <None Include="DirectX\Include\xnamathmisc.inl" />
+    <None Include="DirectX\Include\xnamathvector.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
