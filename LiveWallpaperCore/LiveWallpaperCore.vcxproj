@@ -133,6 +133,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Cherryfps.h" />
+    <ClInclude Include="DirectCommon.h" />
+    <ClInclude Include="DirectFont.h" />
+    <ClInclude Include="DirectGraphics.h" />
+    <ClInclude Include="DirectSurface.h" />
+    <ClInclude Include="DirectThreadSafe.h" />
     <ClInclude Include="DirectX\Include\audiodefs.h" />
     <ClInclude Include="DirectX\Include\comdecl.h" />
     <ClInclude Include="DirectX\Include\D2D1.h" />
@@ -321,6 +327,11 @@
     <ClInclude Include="FFMpeg\Include\libswscale\version.h" />
     <ClInclude Include="LiveCore.h" />
     <ClInclude Include="LiveCoreThread.h" />
+    <ClInclude Include="PlumConsole.h" />
+    <ClInclude Include="PlumIni.h" />
+    <ClInclude Include="PlumLog.h" />
+    <ClInclude Include="PlumPath.h" />
+    <ClInclude Include="PlumThread.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="WinMain.h" />
     <ClInclude Include="WinProcess.h" />
@@ -330,8 +341,18 @@
     <ResourceCompile Include="LiveWallpaperCore.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cherryfps.cpp" />
+    <ClCompile Include="DirectFont.cpp" />
+    <ClCompile Include="DirectGraphics.cpp" />
+    <ClCompile Include="DirectSurface.cpp" />
+    <ClCompile Include="DirectThreadSafe.cpp" />
     <ClCompile Include="LiveCore.cpp" />
     <ClCompile Include="LiveCoreThread.cpp" />
+    <ClCompile Include="PlumConsole.cpp" />
+    <ClCompile Include="PlumIni.cpp" />
+    <ClCompile Include="PlumLog.cpp" />
+    <ClCompile Include="PlumPath.cpp" />
+    <ClCompile Include="PlumThread.cpp" />
     <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="WinProcess.cpp" />
     <ClCompile Include="WinUtilities.cpp" />

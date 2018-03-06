@@ -1,6 +1,6 @@
 /*
 *     COPYRIGHT NOTICE
-*     Copyright(c) 2017~2018, alopex
+*     Copyright(c) 2017~2018, Team Shanghai Dream Equinox
 *     All rights reserved.
 *
 * @file		LiveCore.cpp

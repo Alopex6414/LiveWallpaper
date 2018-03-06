@@ -633,6 +633,39 @@
     <ClInclude Include="LiveCoreThread.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DirectCommon.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectFont.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectGraphics.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectSurface.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectThreadSafe.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="Cherryfps.h">
+      <Filter>CherryLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumConsole.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumIni.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumLog.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumPath.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumThread.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -654,6 +687,36 @@
     </ClCompile>
     <ClCompile Include="LiveCoreThread.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectFont.cpp">
+      <Filter>DirectLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectGraphics.cpp">
+      <Filter>DirectLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectSurface.cpp">
+      <Filter>DirectLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectThreadSafe.cpp">
+      <Filter>DirectLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="Cherryfps.cpp">
+      <Filter>CherryLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumConsole.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumIni.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumLog.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumPath.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumThread.cpp">
+      <Filter>PlumLibrary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
