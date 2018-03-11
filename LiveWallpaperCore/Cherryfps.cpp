@@ -67,6 +67,18 @@ void CCherryfps::CherryfpsInit(int nFontSize, LPWSTR lpszFontType)
 }
 
 //------------------------------------------------------------------
+// @Function:	 CherryfpsReset(void)
+// @Purpose: CCherryfps丢失设备重置
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+HRESULT CCherryfps::CherryfpsReset(void)
+{
+	return (m_pFont->DirectFontReset());
+}
+
+//------------------------------------------------------------------
 // @Function:	 CherryfpsGetfps(void)
 // @Purpose: CCherryfps获取帧速率fps
 // @Since: v1.00a

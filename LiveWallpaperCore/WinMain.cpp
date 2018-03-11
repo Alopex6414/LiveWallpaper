@@ -18,8 +18,24 @@
 int WINAPI WinMain(IN HINSTANCE hInstance, IN HINSTANCE hPrevInstance, IN LPSTR lpCmdLine, IN int nCmdShow)
 {
 	int Msg;
+	HRESULT hr;
+	
+	HANDLE hMutex;
+	hMutex = CreateMutex(NULL, TRUE, L"LiveWallpaperCore");
+	if (hMutex)
+	{
+		if (ERROR_ALREADY_EXISTS == GetLastError())
+		{
+			return -1;
+		}
+	}
 
-	InitWinMain(hInstance, hPrevInstance, lpCmdLine, nCmdShow, (LPCALLBACKSETWNDPARAFUNC)(&SetWindowParameterCallBack), (LPCALLBACKINITWNDEXTRAFUNC)(&InitWindowExtraCallBack));
+	hr = InitWinMain(hInstance, hPrevInstance, lpCmdLine, nCmdShow, (LPCALLBACKSETWNDPARAFUNC)(&SetWindowParameterCallBack), (LPCALLBACKINITWNDEXTRAFUNC)(&InitWindowExtraCallBack));
+	if (FAILED(hr))
+	{
+		return -1;
+	}
+
 	Msg = WinMainLoop((LPCALLBACKDIRECT3DRENDERFUNC)(&Direct3DRenderCallBack), (LPCALLBACKRELEASEWNDEXTRAFUNC)(&ReleaseWindowExtraCallBack));
 
 	return Msg;

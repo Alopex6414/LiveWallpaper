@@ -18,6 +18,9 @@
 //Include Windows Header File
 #include <Windows.h>
 
+//Include ShellAPI Header File
+#include <shellapi.h>
+
 //Include C/C++ Running Header File
 #include <stdio.h>
 #include <stdlib.h>

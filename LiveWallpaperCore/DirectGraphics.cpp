@@ -347,7 +347,7 @@ HRESULT WINAPI DirectGraphics::DirectGraphicsInit(HWND hWnd, bool bIsWindowed, i
 	//填充D3DPRESENT_PARAMETERS结构
 	m_D3D9pp.BackBufferWidth = nScreenWidth;//后台缓冲表面宽度(Pixel)
 	m_D3D9pp.BackBufferHeight = nScreenHeight;//后台缓冲表面高度(Pixel)
-	m_D3D9pp.BackBufferFormat = D3DFMT_A8R8G8B8;//后台缓冲像素格式
+	m_D3D9pp.BackBufferFormat = D3DFMT_UNKNOWN;//后台缓冲像素格式
 	m_D3D9pp.BackBufferCount = 1;//后台缓冲数量(1)
 	m_D3D9pp.MultiSampleType = D3DMULTISAMPLE_NONE;//后台缓冲多重采样类型
 	m_D3D9pp.MultiSampleQuality = 0;//后台缓冲多重采样质量

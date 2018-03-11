@@ -11,11 +11,16 @@
 * @date		2017-12-8	v1.10a	alopex	Code Do Not Rely On MSVCR Library.
 */
 #include "WinUtilities.h"
+#include "resource.h"
+
+#pragma warning (disable:4996)
 
 //WinUtilities主要用于Win32窗口项目注册窗口、初始化、消息处理...
 //Variable
 HWND g_hWnd;					//窗口句柄
 HINSTANCE g_hInstance;			//窗口实例句柄
+
+HMENU g_hMenu;					//窗口菜单句柄
 
 //------------------------------------------------------------------
 // @Function:	 MyRegisterClass(HINSTANCE hInstance)
@@ -68,9 +73,9 @@ BOOL InitWndInstance(HINSTANCE hInstance, int nCmdShow, WndPara* lpsWndPara, LPC
 	int nScreenHeight = 0;//屏幕高度
 
 	SetRect(&Rect, 0, 0, lpsWndPara->nWndWidth, lpsWndPara->nWndHeight);//设置窗口区域矩形
-	AdjustWindowRect(&Rect, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, false);//窗口具有标题栏、菜单栏、最小化窗口
+	AdjustWindowRect(&Rect, WS_POPUP, false);//窗口具有标题栏、菜单栏、最小化窗口
 
-	hWnd = CreateWindow(L"WinClass", lpsWndPara->lpszTitle, WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX, CW_USEDEFAULT, 0, (Rect.right - Rect.left), (Rect.bottom - Rect.top), NULL, NULL, hInstance, NULL);//初始化窗口
+	hWnd = CreateWindow(L"WinClass", lpsWndPara->lpszTitle, WS_POPUP, CW_USEDEFAULT, 0, (Rect.right - Rect.left), (Rect.bottom - Rect.top), NULL, NULL, hInstance, NULL);//初始化窗口
 	if (!hWnd)
 	{
 		return FALSE;//初始化窗口失败(Exit)
@@ -78,6 +83,21 @@ BOOL InitWndInstance(HINSTANCE hInstance, int nCmdShow, WndPara* lpsWndPara, LPC
 
 	g_hWnd = hWnd;//存储窗口句柄
 	g_hInstance = hInstance;//存储窗口实例句柄
+
+	NOTIFYICONDATA nID = { 0 };
+
+	nID.cbSize = sizeof(NOTIFYICONDATA);
+	nID.hWnd = hWnd;//窗口句柄
+	nID.uID = lpsWndPara->wIcon;//图标的ID
+	nID.hIcon = ::LoadIcon(hInstance, MAKEINTRESOURCE(lpsWndPara->wIcon));//加载图标
+	nID.uCallbackMessage = WM_USER;//点击图标的事件消息(用户自定义消息)
+	nID.uFlags = NIF_ICON | NIF_MESSAGE | NIF_TIP;//图标样式
+	_tcscpy(nID.szTip, _T("LiveWallpaperCore"));//鼠标移动到图标显示
+	Shell_NotifyIcon(NIM_ADD, &nID);
+
+	g_hMenu = CreatePopupMenu();//创建菜单
+	AppendMenu(g_hMenu, MF_STRING, IDR_MENU_MAIN_RESTART, L"ReStart");
+	AppendMenu(g_hMenu, MF_STRING, IDR_MENU_MAIN_EXIT, L"Exit");
 
 	GetWindowInfo(hWnd, &WindowInfo);//获取窗口信息
 	nWindowWidth = Rect.right - Rect.left;//计算窗口宽度
@@ -89,7 +109,7 @@ BOOL InitWndInstance(HINSTANCE hInstance, int nCmdShow, WndPara* lpsWndPara, LPC
 	{
 		nPosX = (nScreenWidth - nWindowWidth) >> 1;//窗口初始X坐标
 		nPosY = (nScreenHeight - nWindowHeight) >> 1;//窗口初始Y坐标
-		SetWindowPos(hWnd, HWND_TOP, nPosX, nPosY, 0, 0, SWP_NOSIZE);//设置窗口位置(ScreenCenter)
+		SetWindowPos(hWnd, HWND_BOTTOM, nPosX, nPosY, 0, 0, SWP_NOSIZE);//设置窗口位置(ScreenCenter)
 	}
 
 	if (pCallBackInitWndExtra != NULL)//如果传入参数不为NULL
@@ -119,7 +139,9 @@ BOOL InitWndInstance(HINSTANCE hInstance, int nCmdShow, WndPara* lpsWndPara, LPC
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
+	int nRet;
 	PAINTSTRUCT ps;
+	POINT pt;
 	HDC hdc;
 
 	switch (message)
@@ -137,6 +159,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_TIMER:
+		break;
+	case WM_USER:
+		if (lParam == WM_RBUTTONDOWN)
+		{
+			GetCursorPos(&pt);
+			::SetForegroundWindow(g_hWnd);
+			EnableMenuItem(g_hMenu, IDR_MENU_MAIN_RESTART, MF_GRAYED);
+			nRet = TrackPopupMenu(g_hMenu, TPM_RETURNCMD, pt.x, pt.y, NULL, g_hWnd, NULL);
+			//if (nRet == IDR_MENU_MAIN_RESTART)
+			if (nRet == IDR_MENU_MAIN_EXIT) SendMessage(g_hWnd, WM_CLOSE, wParam, lParam);
+		}
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);

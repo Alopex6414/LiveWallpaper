@@ -26,7 +26,7 @@
 #endif
 
 #ifndef USER_SCREENHEIGHT
-#define USER_SCREENHEIGHT	720							//窗口高度
+#define USER_SCREENHEIGHT	540							//窗口高度
 #endif
 
 #ifndef USER_WINDOWTITLE
@@ -34,7 +34,7 @@
 #endif
 
 #ifndef USER_WINDOWICON
-#define USER_WINDOWICON		(WORD)IDI_ICON_LIVECORE128	//窗口标题图标
+#define USER_WINDOWICON		(WORD)IDI_ICON_LIVECORE		//窗口标题图标
 #endif
 
 //Function Definition

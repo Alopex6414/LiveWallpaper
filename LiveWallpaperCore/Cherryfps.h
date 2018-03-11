@@ -41,6 +41,9 @@ public:
 	//初始化
 	void CherryfpsInit(int nFontSize, LPWSTR lpszFontType);			//Cherryfps (~初始化)
 
+	//重置
+	HRESULT CherryfpsReset(void);									//Cherryfps Reset (~Reset)
+
 	//计算
 	void CherryfpsGetfps(void);										//Cherryfps Get fps    (获取fps)
 	void CherryfpsGetfpsEx(float fTimeDelta, float* pfps);			//Cherryfps Get fps Ex (获取fps)

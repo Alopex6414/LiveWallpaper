@@ -10,3 +10,13 @@
 * @date		2017-11-29
 */
 #pragma once
+
+#include "PlumThread.h"
+
+class CLiveCoreThread :public CPlumThreadBase
+{
+public:
+	CLiveCoreThread();
+	~CLiveCoreThread();
+	virtual void WINAPI PlumThreadRun();
+};

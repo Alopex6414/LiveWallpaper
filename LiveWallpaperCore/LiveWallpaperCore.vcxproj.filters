@@ -666,6 +666,12 @@
     <ClInclude Include="PlumThread.h">
       <Filter>PlumLibrary</Filter>
     </ClInclude>
+    <ClInclude Include="LiveCoreFunction.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumFile.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -718,15 +724,15 @@
     <ClCompile Include="PlumThread.cpp">
       <Filter>PlumLibrary</Filter>
     </ClCompile>
+    <ClCompile Include="LiveCoreFunction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumFile.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resource\Icon\LiveCore64.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="Resource\Icon\LiveCore32.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="Resource\Icon\LiveCore128.ico">
+    <Image Include="Resource\Icon\LiveCore.ico">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

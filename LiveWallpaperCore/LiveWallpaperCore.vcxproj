@@ -116,6 +116,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(ProjectDir)FFMpeg\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/SAFESEH:NO %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -326,8 +327,10 @@
     <ClInclude Include="FFMpeg\Include\libswscale\swscale.h" />
     <ClInclude Include="FFMpeg\Include\libswscale\version.h" />
     <ClInclude Include="LiveCore.h" />
+    <ClInclude Include="LiveCoreFunction.h" />
     <ClInclude Include="LiveCoreThread.h" />
     <ClInclude Include="PlumConsole.h" />
+    <ClInclude Include="PlumFile.h" />
     <ClInclude Include="PlumIni.h" />
     <ClInclude Include="PlumLog.h" />
     <ClInclude Include="PlumPath.h" />
@@ -347,8 +350,10 @@
     <ClCompile Include="DirectSurface.cpp" />
     <ClCompile Include="DirectThreadSafe.cpp" />
     <ClCompile Include="LiveCore.cpp" />
+    <ClCompile Include="LiveCoreFunction.cpp" />
     <ClCompile Include="LiveCoreThread.cpp" />
     <ClCompile Include="PlumConsole.cpp" />
+    <ClCompile Include="PlumFile.cpp" />
     <ClCompile Include="PlumIni.cpp" />
     <ClCompile Include="PlumLog.cpp" />
     <ClCompile Include="PlumPath.cpp" />
@@ -358,9 +363,7 @@
     <ClCompile Include="WinUtilities.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Resource\Icon\LiveCore128.ico" />
-    <Image Include="Resource\Icon\LiveCore32.ico" />
-    <Image Include="Resource\Icon\LiveCore64.ico" />
+    <Image Include="Resource\Icon\LiveCore.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="DirectX\Include\D3DX10math.inl" />
