@@ -328,7 +328,9 @@
     <ClInclude Include="FFMpeg\Include\libswscale\version.h" />
     <ClInclude Include="LiveCore.h" />
     <ClInclude Include="LiveCoreFunction.h" />
+    <ClInclude Include="LiveCoreMonitor.h" />
     <ClInclude Include="LiveCoreThread.h" />
+    <ClInclude Include="LiveCoreThread2.h" />
     <ClInclude Include="PlumConsole.h" />
     <ClInclude Include="PlumFile.h" />
     <ClInclude Include="PlumIni.h" />
@@ -351,7 +353,9 @@
     <ClCompile Include="DirectThreadSafe.cpp" />
     <ClCompile Include="LiveCore.cpp" />
     <ClCompile Include="LiveCoreFunction.cpp" />
+    <ClCompile Include="LiveCoreMonitor.cpp" />
     <ClCompile Include="LiveCoreThread.cpp" />
+    <ClCompile Include="LiveCoreThread2.cpp" />
     <ClCompile Include="PlumConsole.cpp" />
     <ClCompile Include="PlumFile.cpp" />
     <ClCompile Include="PlumIni.cpp" />

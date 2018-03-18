@@ -63,15 +63,29 @@ void WINAPI CLiveCoreThread::PlumThreadRun()
 	if (avformat_open_input(&pFormatCtx, g_chLiveCoreVideoAddress, NULL, NULL) != 0)
 	{
 		MessageBox(g_hWnd, L"打开文件失败!", L"错误", MB_OK | MB_ICONERROR);
+		EnterCriticalSection(&g_csDecode);
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Can not Open Video File.\n");
+		LeaveCriticalSection(&g_csDecode);
 		return;
 	}
+
+	EnterCriticalSection(&g_csDecode);
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Open Video File.\n");
+	LeaveCriticalSection(&g_csDecode);
 
 	//获取视频文件信息
 	if (avformat_find_stream_info(pFormatCtx, NULL) < 0)
 	{
 		MessageBox(g_hWnd, L"无法读取文件信息!", L"错误", MB_OK | MB_ICONERROR);
+		EnterCriticalSection(&g_csDecode);
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Fail Read Video File.\n");
+		LeaveCriticalSection(&g_csDecode);
 		return;
 	}
+
+	EnterCriticalSection(&g_csDecode);
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Read Video File.\n");
+	LeaveCriticalSection(&g_csDecode);
 
 	int VideoIndex = -1;
 
@@ -87,8 +101,15 @@ void WINAPI CLiveCoreThread::PlumThreadRun()
 	if (VideoIndex == -1)
 	{
 		MessageBox(g_hWnd, L"未读取到视频信息!", L"错误", MB_OK | MB_ICONERROR);
+		EnterCriticalSection(&g_csDecode);
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Fail Read Video Info.\n");
+		LeaveCriticalSection(&g_csDecode);
 		return;
 	}
+
+	EnterCriticalSection(&g_csDecode);
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Read Video Info.\n");
+	LeaveCriticalSection(&g_csDecode);
 
 	pCodecCtx = pFormatCtx->streams[VideoIndex]->codec;
 
@@ -97,15 +118,29 @@ void WINAPI CLiveCoreThread::PlumThreadRun()
 	if (pCodec == NULL)
 	{
 		MessageBox(g_hWnd, L"未查找到解码器!", L"错误", MB_OK | MB_ICONERROR);
+		EnterCriticalSection(&g_csDecode);
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Fail Find Codec ID.\n");
+		LeaveCriticalSection(&g_csDecode);
 		return;
 	}
+
+	EnterCriticalSection(&g_csDecode);
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Find Codec ID.\n");
+	LeaveCriticalSection(&g_csDecode);
 
 	//打开解码器
 	if (avcodec_open2(pCodecCtx, pCodec, NULL) < 0)
 	{
 		MessageBox(g_hWnd, L"无法打开解码器!", L"错误", MB_OK | MB_ICONERROR);
+		EnterCriticalSection(&g_csDecode);
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Fail Open Codec.\n");
+		LeaveCriticalSection(&g_csDecode);
 		return;
 	}
+
+	EnterCriticalSection(&g_csDecode);
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Open Codec.\n");
+	LeaveCriticalSection(&g_csDecode);
 
 	uint8_t *OutBuffer;
 	AVPacket *Packet;
@@ -156,6 +191,8 @@ void WINAPI CLiveCoreThread::PlumThreadRun()
 					sws_scale(img_convert_ctx, (const uint8_t* const*)pFrame->data, pFrame->linesize, 0, pCodecCtx->height, pFrameYUV->data, pFrameYUV->linesize);
 					y_size = pCodecCtx->width*pCodecCtx->height;
 
+					while (g_bDecodeFlag);
+
 					EnterCriticalSection(&g_csDecode);
 					memset(g_pArrayY, 0, nSize);
 					memset(g_pArrayU, 0, nSize);
@@ -164,6 +201,12 @@ void WINAPI CLiveCoreThread::PlumThreadRun()
 					memcpy_s(g_pArrayU, nSize, pFrameYUV->data[1], y_size / 4);
 					memcpy_s(g_pArrayV, nSize, pFrameYUV->data[2], y_size / 4);
 					g_bDecodeFlag = true;
+
+					if (g_nLiveCoreLogProcess)
+					{
+						g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Decode One frame.\n");
+					}
+
 					LeaveCriticalSection(&g_csDecode);
 				}
 			}
@@ -186,6 +229,8 @@ void WINAPI CLiveCoreThread::PlumThreadRun()
 			sws_scale(img_convert_ctx, (const uint8_t* const*)pFrame->data, pFrame->linesize, 0, pCodecCtx->height, pFrameYUV->data, pFrameYUV->linesize);
 			y_size = pCodecCtx->width*pCodecCtx->height;
 
+			while (g_bDecodeFlag);
+
 			EnterCriticalSection(&g_csDecode);
 			memset(g_pArrayY, 0, nSize);
 			memset(g_pArrayU, 0, nSize);
@@ -194,6 +239,12 @@ void WINAPI CLiveCoreThread::PlumThreadRun()
 			memcpy_s(g_pArrayU, nSize, pFrameYUV->data[1], y_size / 4);
 			memcpy_s(g_pArrayV, nSize, pFrameYUV->data[2], y_size / 4);
 			g_bDecodeFlag = true;
+
+			if (g_nLiveCoreLogProcess)
+			{
+				g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Decode One frame.\n");
+			}
+
 			LeaveCriticalSection(&g_csDecode);
 		}
 

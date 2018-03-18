@@ -31,6 +31,8 @@ extern int g_nLiveCoreMode;
 extern int g_nLiveCoreShowGraphics;
 extern int g_nLiveCoreShowGraphicsFont;
 extern int g_nLiveCoreWallpaperMode;
+extern int g_nLiveCoreWallpaperAudioMode;
+extern int g_nLiveCoreLogProcess;
 extern char g_chLiveCoreVideoAddress[MAX_PATH];
 
 //Function Declaration

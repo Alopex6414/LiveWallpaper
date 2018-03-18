@@ -4,4 +4,5 @@ LiveCore_Mode: LiveCoreÖ´ĞĞÄ£Ê½: 0~×éºÏÄ£Ê½(ĞèÒªÅäºÏLiveWallpaper.exe) 1~¶ÀÁ¢Ä£Ê
 LiveCore_Show_Graphics: LiveCoreÊÇ·ñÏÔÊ¾ÏÔ¿¨ĞÍºÅºÍÖ¡ËÙÂÊfps 0~²»ÏÔÊ¾ 1~ÏÔÊ¾
 LiveCore_Show_GraphicsFont: LiveCoreÏÔ¿¨ĞÍºÅºÍÖ¡ËÙÂÊ×ÖÌå´óĞ¡
 LiveCore_Wallpaper_Mode: LiveCoreÏÔÊ¾Ä£Ê½: 0~Ìî³ä 1~ÊÊÓ¦ 2~À­Éì 3~Æ½ÆÌ 4~¾ÓÖĞ
+LiveCore_Wallpaper_Audio: LiveCoreÒôÆµÄ£Ê½: 0~²»²¥·Å±ÚÖ½ÒôÆµ 1~²¥·Å±ÚÖ½ÒôÆµ
 LiveCore_Video_Address: LiveCore¶¯Ì¬±ÚÖ½ÊÓÆµ(Video)Â·¾¶µØÖ·

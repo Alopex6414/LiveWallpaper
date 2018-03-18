@@ -23,6 +23,8 @@ int g_nLiveCoreMode = 0;
 int g_nLiveCoreShowGraphics = 0;
 int g_nLiveCoreShowGraphicsFont = 0;
 int g_nLiveCoreWallpaperMode = 0;
+int g_nLiveCoreWallpaperAudioMode = 0;
+int g_nLiveCoreLogProcess = 0;
 char g_chLiveCoreVideoAddress[MAX_PATH] = { 0 };
 
 //------------------------------------------------------------------
@@ -69,6 +71,16 @@ void AnalyzeConfigFile()
 	GetPrivateProfileStringA("LIVECOREWALLPAPERMODE", "LiveCore_Wallpaper_Mode", 0, chArray, MAX_PATH, chFilePath);
 	nValue = atoi(chArray);
 	g_nLiveCoreWallpaperMode = nValue;	// LiveCore屏幕分辨率模式: 0~填充 1~适应 2~拉伸 3~平铺 4~居中
+
+	memset(chArray, 0, MAX_PATH);
+	GetPrivateProfileStringA("LIVECOREWALLPAPERMODE", "LiveCore_Wallpaper_Audio", 0, chArray, MAX_PATH, chFilePath);
+	nValue = atoi(chArray);
+	g_nLiveCoreWallpaperAudioMode = nValue;	// LiveCore音频播放模式: 0~不播放音频 1~播放音频
+
+	memset(chArray, 0, MAX_PATH);
+	GetPrivateProfileStringA("LIVECORELOGMODE", "LiveCore_Log_Process", 0, chArray, MAX_PATH, chFilePath);
+	nValue = atoi(chArray);
+	g_nLiveCoreLogProcess = nValue;	// LiveCore日志记录: 0~不记录过程 1~记录过程
 
 	memset(chArray, 0, MAX_PATH);
 	GetPrivateProfileStringA("LIVECOREVIDEOADDRESS", "LiveCore_Video_Address", 0, chArray, MAX_PATH, chFilePath);

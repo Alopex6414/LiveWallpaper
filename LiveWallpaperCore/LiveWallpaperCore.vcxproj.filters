@@ -672,6 +672,12 @@
     <ClInclude Include="PlumFile.h">
       <Filter>PlumLibrary</Filter>
     </ClInclude>
+    <ClInclude Include="LiveCoreThread2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveCoreMonitor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -729,6 +735,12 @@
     </ClCompile>
     <ClCompile Include="PlumFile.cpp">
       <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveCoreThread2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveCoreMonitor.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

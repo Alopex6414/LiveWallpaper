@@ -28,9 +28,13 @@
 #include <time.h>
 #include <mmsystem.h>
 
+//Include PlumLibrary
+#include "PlumLog.h"
+
 //Variable Declaration
 extern bool g_bReStart;
-extern bool g_bDecodeFlag;
+extern bool g_bMonitorFlag;
+extern volatile bool g_bDecodeFlag;
 extern CRITICAL_SECTION g_csDecode;
 
 extern unsigned char* g_pArrayY;
@@ -39,6 +43,8 @@ extern unsigned char* g_pArrayV;
 
 extern int g_nVideoWidth;
 extern int g_nVideoHeight;
+
+extern CPlumLog g_pPlumLogMain;
 
 //Function Declaration
 extern BOOL LiveWallpaperInit();

@@ -1,0 +1,31 @@
+LiveWallpaperCore RuntimeLog File
+
+[Infomation]
+Machine Name: CLEAR
+User Name: hyx
+Windows Vision: Microsoft Windows 7
+Current Time: 2018-03-18 17:52:39
+Current Process ID: 10128
+
+[Process Start]
+Log Format:<Current Time>[Thread ID]<File,Line>:...
+
+<2018-03-18 17:52:39.529>[5552]<LiveCore.cpp Line:87>:Succeed Start Monitor Thread.
+<2018-03-18 17:52:39.912>[5552]<LiveCore.cpp Line:101>:Monitor Thread Exit.
+<2018-03-18 17:52:39.914>[5552]<LiveCore.cpp Line:111>:Succeed Set Window Handle.
+<2018-03-18 17:52:39.915>[5552]<LiveCore.cpp Line:115>:Succeed Analyze Config File. Para:LiveCoreMode=1, Para:LiveCoreShowGraphics=0, Para:LiveCoreShowGraphicsFont=20, Para:LiveCoreWallpaperMode=0, Para:LiveCoreWallpaperAudioMode=0, Para:LiveCoreLogProcess=0.
+<2018-03-18 17:52:39.929>[5552]<LiveCore.cpp Line:137>:Succeed Init Direct3D Graphics.
+<2018-03-18 17:52:39.953>[5552]<LiveCore.cpp Line:161>:Succeed Analyze Video Infomation.
+<2018-03-18 17:52:39.953>[5552]<LiveCore.cpp Line:162>:Para:VideoWidth=1920, Para:VideoHeight=1080.
+<2018-03-18 17:52:39.953>[5552]<LiveCore.cpp Line:172>:Succeed Init Direct3D Surface.
+<2018-03-18 17:52:39.953>[5552]<LiveCore.cpp Line:184>:Succeed Init Critical Section.
+<2018-03-18 17:52:39.954>[5552]<LiveCore.cpp Line:188>:Succeed Init Decode Thread.
+<2018-03-18 17:52:39.955>[9048]<LiveCoreThread.cpp Line:73>:Succeed Open Video File.
+<2018-03-18 17:52:39.966>[9048]<LiveCoreThread.cpp Line:87>:Succeed Read Video File.
+<2018-03-18 17:52:39.966>[9048]<LiveCoreThread.cpp Line:111>:Succeed Read Video Info.
+<2018-03-18 17:52:39.966>[9048]<LiveCoreThread.cpp Line:128>:Succeed Find Codec ID.
+<2018-03-18 17:52:39.966>[9048]<LiveCoreThread.cpp Line:142>:Succeed Open Codec.
+<2018-03-18 17:53:07.739>[5552]<LiveCore.cpp Line:224>:Decode Thread Exit.
+<2018-03-18 17:53:07.739>[5552]<LiveCore.cpp Line:229>:Process Exit.
+
+[Process Exit]

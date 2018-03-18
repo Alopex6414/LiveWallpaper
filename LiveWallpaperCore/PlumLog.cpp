@@ -363,8 +363,14 @@ void CPlumLog::PlumLogWriteExtend(LPCSTR file, LONG line, LPCSTR lpcstr, ...)
 
 	GetLocalTime(&CurrentTime);			//获取当前时间
 	dwThreadID = GetCurrentThreadId();	//获取当前线程ID
-
-	pArr = strrchr((char*)file, '\\') + 1;
+	if (strchr((char*)file, '\\') != NULL)
+	{
+		pArr = strrchr((char*)file, '\\') + 1;
+	}
+	else
+	{
+		pArr = (char*)file;
+	}
 
 	memset(CMDArr, 0, sizeof(CMDArr));
 	_snprintf_s(CMDArr, sizeof(CMDArr), "<%d-%02d-%02d %02d:%02d:%02d.%03d>[%d]<%s Line:%d>:", CurrentTime.wYear, CurrentTime.wMonth, CurrentTime.wDay, CurrentTime.wHour, CurrentTime.wMinute, CurrentTime.wSecond, CurrentTime.wMilliseconds, dwThreadID, pArr, line);
