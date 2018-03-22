@@ -13,6 +13,8 @@
 #include "WinUtilities.h"
 #include "resource.h"
 
+#include "LiveCoreFunction.h"
+
 #pragma warning (disable:4996)
 
 //WinUtilities主要用于Win32窗口项目注册窗口、初始化、消息处理...
@@ -165,10 +167,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		{
 			GetCursorPos(&pt);
 			::SetForegroundWindow(g_hWnd);
-			EnableMenuItem(g_hMenu, IDR_MENU_MAIN_RESTART, MF_GRAYED);
+			//EnableMenuItem(g_hMenu, IDR_MENU_MAIN_RESTART, MF_GRAYED);
 			nRet = TrackPopupMenu(g_hMenu, TPM_RETURNCMD, pt.x, pt.y, NULL, g_hWnd, NULL);
-			//if (nRet == IDR_MENU_MAIN_RESTART)
-			if (nRet == IDR_MENU_MAIN_EXIT) SendMessage(g_hWnd, WM_CLOSE, wParam, lParam);
+			if (nRet == IDR_MENU_MAIN_RESTART)
+			{
+				LiveCoreReStartProcess("LiveWallpaperCore.exe");
+				SendMessage(g_hWnd, WM_CLOSE, wParam, lParam);
+			}
+			if (nRet == IDR_MENU_MAIN_EXIT)
+			{
+				SendMessage(g_hWnd, WM_CLOSE, wParam, lParam);
+			}
 		}
 		break;
 	case WM_DESTROY:

@@ -40,3 +40,4 @@ extern void AnalyzeConfigFile();
 extern BOOL LiveRunPreProcess();
 extern BOOL AnalyzeVideoInfo(HWND hWnd, const char* pVideoPath, int* pWidth, int* pHeight);
 extern BOOL IsProcessExist(const WCHAR* strFilename);
+extern BOOL LiveCoreReStartProcess(const char* pStrArr);
