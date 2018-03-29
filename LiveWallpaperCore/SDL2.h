@@ -14,6 +14,7 @@
 extern "C"
 {
 #include "SDL.h"
+#include "SDL_thread.h"
 }
 
 #pragma comment(lib, "SDL2.lib")

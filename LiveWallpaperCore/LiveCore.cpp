@@ -187,8 +187,8 @@ BOOL LiveWallpaperInit()
 	g_pPlumThread->PlumThreadInit();
 	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Init Decode Thread.\n");
 
-	//g_pPlumThread2 = new CPlumThread(&g_cLiveCoreThread2);
-	//g_pPlumThread2->PlumThreadInit();
+	g_pPlumThread2 = new CPlumThread(&g_cLiveCoreThread2);
+	g_pPlumThread2->PlumThreadInit();
 
 	return TRUE;
 }

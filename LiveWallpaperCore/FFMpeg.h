@@ -23,6 +23,7 @@ extern "C"
 #include "libavutil\opt.h"         
 #include "libavutil\mathematics.h"      
 #include "libavutil\samplefmt.h"   
+#include "libswresample/swresample.h"
 };
 #pragma comment(lib, "avcodec.lib")  
 #pragma comment(lib, "avformat.lib")  
