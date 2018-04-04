@@ -11,6 +11,9 @@
 */
 #include "WinMain.h"
 
+//Variable Definition
+CPlumLog g_cPlumLog;
+
 /*
 ** WinMain(IN HINSTANCE hInstance, IN HINSTANCE hPrevInstance, IN LPSTR lpCmdLine, IN int nCmdShow)
 ** Purpose:  ´°¿ÚÖ÷º¯Êý
@@ -22,5 +25,23 @@
 */
 int WINAPI WinMain(IN HINSTANCE hInstance, IN HINSTANCE hPrevInstance, IN LPSTR lpCmdLine, IN int nCmdShow)
 {
+	int nResult = 0;
+
+	g_cPlumLog.PlumLogInit();
+
+	g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "Live Process Created Succeed.\n");
+
+	BOOL bResult;
+
+	bResult = CreateLiveUIProcess();
+	if (!bResult)
+	{
+		g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "LiveUI Process Created FAIL! Return Value=-1.\n");
+		g_cPlumLog.PlumLogExit();
+		return -1;
+	}
+
+	g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "LiveUI Process Created Succeed. Return Value=0.\n");
+	g_cPlumLog.PlumLogExit();
 	return 0;
 }

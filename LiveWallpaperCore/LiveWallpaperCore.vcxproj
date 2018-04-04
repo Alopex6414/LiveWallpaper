@@ -331,10 +331,13 @@
     <ClInclude Include="LiveCoreMonitor.h" />
     <ClInclude Include="LiveCoreThread.h" />
     <ClInclude Include="LiveCoreThread2.h" />
+    <ClInclude Include="PlumCipherA.h" />
     <ClInclude Include="PlumConsole.h" />
+    <ClInclude Include="PlumCrypt.h" />
     <ClInclude Include="PlumFile.h" />
     <ClInclude Include="PlumIni.h" />
     <ClInclude Include="PlumLog.h" />
+    <ClInclude Include="PlumPack.h" />
     <ClInclude Include="PlumPath.h" />
     <ClInclude Include="PlumThread.h" />
     <ClInclude Include="resource.h" />
@@ -439,10 +442,13 @@
     <ClCompile Include="LiveCoreMonitor.cpp" />
     <ClCompile Include="LiveCoreThread.cpp" />
     <ClCompile Include="LiveCoreThread2.cpp" />
+    <ClCompile Include="PlumCipherA.cpp" />
     <ClCompile Include="PlumConsole.cpp" />
+    <ClCompile Include="PlumCrypt.cpp" />
     <ClCompile Include="PlumFile.cpp" />
     <ClCompile Include="PlumIni.cpp" />
     <ClCompile Include="PlumLog.cpp" />
+    <ClCompile Include="PlumPack.cpp" />
     <ClCompile Include="PlumPath.cpp" />
     <ClCompile Include="PlumThread.cpp" />
     <ClCompile Include="WinMain.cpp" />

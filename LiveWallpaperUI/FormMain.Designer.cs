@@ -41,6 +41,7 @@
             this.PanelTool.Name = "PanelTool";
             this.PanelTool.Size = new System.Drawing.Size(64, 720);
             this.PanelTool.TabIndex = 1;
+            this.PanelTool.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelTool_MouseDown);
             // 
             // PanelTitle
             // 
@@ -48,6 +49,7 @@
             this.PanelTitle.Name = "PanelTitle";
             this.PanelTitle.Size = new System.Drawing.Size(862, 34);
             this.PanelTitle.TabIndex = 2;
+            this.PanelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PanelTitle_MouseDown);
             // 
             // PanelIcon
             // 

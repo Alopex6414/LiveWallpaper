@@ -933,6 +933,15 @@
     <ClInclude Include="SDL2.h">
       <Filter>SDL2</Filter>
     </ClInclude>
+    <ClInclude Include="PlumCipherA.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumCrypt.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumPack.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -996,6 +1005,15 @@
     </ClCompile>
     <ClCompile Include="LiveCoreMonitor.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumCipherA.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumCrypt.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumPack.cpp">
+      <Filter>PlumLibrary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+*     COPYRIGHT NOTICE
+*     Copyright(c) 2017, Team Shanghai Dream Equinox
+*     All rights reserved.
+*
+* @file		FormMain.cs
+* @brief	This Program is LiveWallpaperUI Project.
+* @author	alopex
+* @version	v1.10a
+* @date		2018-03-20	v1.00a	alopex	Create Project
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +29,10 @@ namespace LiveWallpaperUI
         private static extern int GetSystemMetrics(int nIndex);
         [DllImport("User32", EntryPoint = "SetWindowPos")]
         private static extern int SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, int uFlags);
+        [DllImport("User32", EntryPoint = "SendMessage")]
+        public static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+        [DllImport("User32.dll")]
+        private static extern int ReleaseCapture();
 
         // Variable Definition
         private Rectangle m_MainRect;       //窗口矩形区域
@@ -140,5 +155,18 @@ namespace LiveWallpaperUI
 
         }
 
+        // 工具栏鼠标拖动
+        private void PanelTool_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage((IntPtr)this.Handle, 0x00A1, 0x0002, 0);
+        }
+
+        // 标题栏鼠标拖动
+        private void PanelTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage((IntPtr)this.Handle, 0x00A1, 0x0002, 0);
+        }
     }
 }
