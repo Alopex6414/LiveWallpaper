@@ -942,6 +942,9 @@
     <ClInclude Include="PlumPack.h">
       <Filter>PlumLibrary</Filter>
     </ClInclude>
+    <ClInclude Include="LiveCoreUnpackThread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -1014,6 +1017,9 @@
     </ClCompile>
     <ClCompile Include="PlumPack.cpp">
       <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveCoreUnpackThread.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

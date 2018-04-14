@@ -25,6 +25,8 @@ int g_nLiveCoreShowGraphicsFont = 0;
 int g_nLiveCoreWallpaperMode = 0;
 int g_nLiveCoreWallpaperAudioMode = 0;
 int g_nLiveCoreLogProcess = 0;
+int g_nLiveCoreVideoMode = 0;
+char g_chLiveCoreVideoName[MAX_PATH] = { 0 };
 char g_chLiveCoreVideoAddress[MAX_PATH] = { 0 };
 
 //------------------------------------------------------------------
@@ -81,6 +83,15 @@ void AnalyzeConfigFile()
 	GetPrivateProfileStringA("LIVECORELOGMODE", "LiveCore_Log_Process", 0, chArray, MAX_PATH, chFilePath);
 	nValue = atoi(chArray);
 	g_nLiveCoreLogProcess = nValue;	// LiveCore日志记录: 0~不记录过程 1~记录过程
+
+	memset(chArray, 0, MAX_PATH);
+	GetPrivateProfileStringA("LIVECOREVIDEOADDRESS", "LiveCore_Video_Mode", 0, chArray, MAX_PATH, chFilePath);
+	nValue = atoi(chArray);
+	g_nLiveCoreVideoMode = nValue;	// LiveCore动态壁纸视频模式: 0~启用默认视频 1~启用选择视频
+
+	memset(chArray, 0, MAX_PATH);
+	GetPrivateProfileStringA("LIVECOREVIDEOADDRESS", "LiveCore_Video_Name", 0, chArray, MAX_PATH, chFilePath);
+	memcpy_s(g_chLiveCoreVideoName, MAX_PATH, chArray, MAX_PATH);	// LiveCore动态壁纸默认视频名称
 
 	memset(chArray, 0, MAX_PATH);
 	GetPrivateProfileStringA("LIVECOREVIDEOADDRESS", "LiveCore_Video_Address", 0, chArray, MAX_PATH, chFilePath);
@@ -270,11 +281,12 @@ BOOL LiveCoreReStartProcess(const char* pStrArr)
 	pTemp = strrchr(chProcessPath, '\\');
 	if (pTemp) *pTemp = '\0';
 	strcat_s(chProcessPath, "\\");
-	strcat_s(chProcessPath, pStrArr);
+	strcat_s(chProcessPath, "LiveWallpaperReStart.exe");
 
 	CHAR chCmdLine[MAX_PATH] = { 0 };
 	strcat_s(chCmdLine, chProcessPath);
-	strcat_s(chCmdLine, " LiveWallpaperReStart.exe");
+	strcat_s(chCmdLine, " ");
+	strcat_s(chCmdLine, pStrArr);
 
 	bResult = CreateProcessA(chProcessPath, chCmdLine, NULL, NULL, FALSE, NULL, NULL, NULL, &si, &pi);
 
@@ -285,4 +297,83 @@ BOOL LiveCoreReStartProcess(const char* pStrArr)
 	}
 
 	return bResult;
+}
+
+//------------------------------------------------------------------
+// @Function:	 LiveCoreCleanUp()
+// @Purpose: LiveCoreCleanUp启动进程
+// @Since: v1.00a
+// @Para: const char* pStrArr	//清理文件路径
+// @Return: BOOL (TRUE:成功, FALSE:失败)
+//------------------------------------------------------------------
+BOOL LiveCoreCleanUp(const char* pStrArr)
+{
+	BOOL bResult;
+
+	STARTUPINFOA si = { 0 };
+	ZeroMemory(&si, sizeof(si));
+	si.cb = sizeof(STARTUPINFOA);
+	GetStartupInfoA(&si);
+	si.wShowWindow = SW_SHOW;
+	si.dwFlags = STARTF_USESHOWWINDOW | STARTF_USESTDHANDLES;
+
+	PROCESS_INFORMATION pi = { 0 };
+	ZeroMemory(&pi, sizeof(pi));
+
+	char chProcessPath[MAX_PATH] = { 0 };
+	char* pTemp = NULL;
+
+	GetModuleFileNameA(NULL, chProcessPath, MAX_PATH);
+	pTemp = strrchr(chProcessPath, '\\');
+	if (pTemp) *pTemp = '\0';
+	strcat_s(chProcessPath, "\\");
+	strcat_s(chProcessPath, "LiveWallpaperCleanUp.exe");
+
+	CHAR chCmdLine[MAX_PATH] = { 0 };
+	strcat_s(chCmdLine, chProcessPath);
+	strcat_s(chCmdLine, " ");
+	strcat_s(chCmdLine, pStrArr);
+
+	bResult = CreateProcessA(chProcessPath, chCmdLine, NULL, NULL, FALSE, NULL, NULL, NULL, &si, &pi);
+
+	if (bResult)
+	{
+		CloseHandle(pi.hThread);
+		CloseHandle(pi.hProcess);
+	}
+
+	return bResult;
+}
+
+//------------------------------------------------------------------
+// @Function:	 LiveCoreSetChildWindow()
+// @Purpose: LiveCore设置桌面子窗口
+// @Since: v1.00a
+// @Para: NULL
+// @Return: NULL
+//------------------------------------------------------------------
+void LiveCoreSetChildWindow(HWND hChildWindow)
+{
+	HWND hDeskTop = NULL;
+	HWND hShellDefView = NULL;
+	HWND hSysListView32 = NULL;
+	HWND hTemp = NULL;
+	DWORD dwReturn = 0;
+
+	hDeskTop = FindWindowEx(GetDesktopWindow(), NULL, L"Progman", L"Program Manager");
+	hShellDefView = FindWindowEx(hDeskTop, NULL, L"SHELLDLL_DefView", 0);
+
+	if (hShellDefView == NULL)
+	{
+		hTemp = FindWindowEx(GetDesktopWindow(), NULL, L"WorkerW", 0);
+		while (hTemp != NULL)
+		{
+			hShellDefView = FindWindowEx(hTemp, NULL, L"SHELLDLL_DefView", 0);
+			if (hShellDefView != NULL) break;
+			hTemp = FindWindowEx(GetDesktopWindow(), hTemp, L"WorkerW", 0);
+		}
+	}
+
+	hSysListView32 = FindWindowEx(hShellDefView, NULL, L"SysListView32", L"FolderView");
+	SetParent(hChildWindow, hDeskTop);
 }

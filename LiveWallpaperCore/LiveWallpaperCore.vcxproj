@@ -331,6 +331,7 @@
     <ClInclude Include="LiveCoreMonitor.h" />
     <ClInclude Include="LiveCoreThread.h" />
     <ClInclude Include="LiveCoreThread2.h" />
+    <ClInclude Include="LiveCoreUnpackThread.h" />
     <ClInclude Include="PlumCipherA.h" />
     <ClInclude Include="PlumConsole.h" />
     <ClInclude Include="PlumCrypt.h" />
@@ -442,6 +443,7 @@
     <ClCompile Include="LiveCoreMonitor.cpp" />
     <ClCompile Include="LiveCoreThread.cpp" />
     <ClCompile Include="LiveCoreThread2.cpp" />
+    <ClCompile Include="LiveCoreUnpackThread.cpp" />
     <ClCompile Include="PlumCipherA.cpp" />
     <ClCompile Include="PlumConsole.cpp" />
     <ClCompile Include="PlumCrypt.cpp" />

@@ -44,6 +44,10 @@ extern unsigned char* g_pArrayV;
 extern int g_nVideoWidth;
 extern int g_nVideoHeight;
 
+extern char g_chDefaultVideoAddress[MAX_PATH];
+extern char g_chDefaultVideoDirector[MAX_PATH];
+extern char g_chDefaultVideoUnpack[MAX_PATH];
+
 extern CPlumLog g_pPlumLogMain;
 
 //Function Declaration

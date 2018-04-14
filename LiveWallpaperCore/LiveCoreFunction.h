@@ -33,6 +33,8 @@ extern int g_nLiveCoreShowGraphicsFont;
 extern int g_nLiveCoreWallpaperMode;
 extern int g_nLiveCoreWallpaperAudioMode;
 extern int g_nLiveCoreLogProcess;
+extern int g_nLiveCoreVideoMode;
+extern char g_chLiveCoreVideoName[MAX_PATH];
 extern char g_chLiveCoreVideoAddress[MAX_PATH];
 
 //Function Declaration
@@ -41,3 +43,5 @@ extern BOOL LiveRunPreProcess();
 extern BOOL AnalyzeVideoInfo(HWND hWnd, const char* pVideoPath, int* pWidth, int* pHeight);
 extern BOOL IsProcessExist(const WCHAR* strFilename);
 extern BOOL LiveCoreReStartProcess(const char* pStrArr);
+extern BOOL LiveCoreCleanUp(const char* pStrArr);
+extern void LiveCoreSetChildWindow(HWND hChildWindow);

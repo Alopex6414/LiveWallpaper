@@ -13,6 +13,7 @@
 #include "LiveCoreThread.h"
 #include "LiveCoreThread2.h"
 #include "LiveCoreMonitor.h"
+#include "LiveCoreUnpackThread.h"
 #include "LiveCoreFunction.h"
 
 #include "WinProcess.h"
@@ -42,6 +43,9 @@ CPlumThread* g_pPlumThread2 = NULL;			// CPlumThread类指针
 CLiveCoreMonitor g_cLiveCoreMonitor;		// CLiveCoreMonitor类实例
 CPlumThread* g_pPlumMonitor = NULL;			// CPlumThread类指针
 
+CLiveCoreUnpackThread g_cLiveCoreUnpack;	// CLiveCoreMonitor类实例
+CPlumThread* g_pPlumUnpack = NULL;			// CPlumThread类指针
+
 CPlumLog g_pPlumLogMain;					// CPlumLog类实例
 
 bool g_bReStart = false;
@@ -49,12 +53,15 @@ bool g_bMonitorFlag = false;
 volatile bool g_bDecodeFlag = false;
 CRITICAL_SECTION g_csDecode;				// CriticalSection临界区
 
-HWND g_hDeskTop = NULL;
 int g_nDeskTopWidth = 0;
 int g_nDeskTopHeight = 0;
 
 int g_nVideoWidth = 0;
 int g_nVideoHeight = 0;
+
+char g_chDefaultVideoAddress[MAX_PATH] = { 0 };
+char g_chDefaultVideoDirector[MAX_PATH] = { 0 };
+char g_chDefaultVideoUnpack[MAX_PATH] = { 0 };
 
 unsigned char* g_pArrayY = NULL;
 unsigned char* g_pArrayU = NULL;
@@ -70,9 +77,6 @@ unsigned char* g_pArrayV = NULL;
 BOOL LiveWallpaperInit()
 {
 	HRESULT hr;
-	HWND hDeskTop = NULL;
-	HWND hShellDefView = NULL;
-	HWND hSysListView32 = NULL;
 
 	// 初始化PlumLog日志
 	g_pPlumLogMain.PlumLogInit();
@@ -80,6 +84,50 @@ BOOL LiveWallpaperInit()
 	// 获取桌面窗口分辨率
 	g_nDeskTopWidth = GetSystemMetrics(SM_CXSCREEN);
 	g_nDeskTopHeight = GetSystemMetrics(SM_CYSCREEN);
+
+	// 分析配置文件
+	AnalyzeConfigFile();
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Analyze Config File. Para:LiveCoreMode=%d, Para:LiveCoreShowGraphics=%d, Para:LiveCoreShowGraphicsFont=%d, "\
+		"Para:LiveCoreWallpaperMode=%d, Para:LiveCoreWallpaperAudioMode=%d, Para:LiveCoreLogProcess=%d.\n", g_nLiveCoreMode, g_nLiveCoreShowGraphics, g_nLiveCoreShowGraphicsFont, g_nLiveCoreWallpaperMode, g_nLiveCoreWallpaperAudioMode, g_nLiveCoreLogProcess);
+
+	// 检测模块进程是否存在
+	if (g_nLiveCoreMode == 0)
+	{
+		if (!IsProcessExist(L"LiveWallpaperUI.exe"))
+		{
+			g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Can not find LiveWallpaperUI.exe Process.\n");
+			return FALSE;
+		}
+	}
+
+	// 是否启用默认视频
+	if (g_nLiveCoreVideoMode == 0)
+	{
+		char* pTemp = NULL;
+
+		GetModuleFileNameA(NULL, g_chDefaultVideoDirector, MAX_PATH);
+		pTemp = strrchr(g_chDefaultVideoDirector, '\\');
+		if (pTemp) *pTemp = '\0';
+		strcat_s(g_chDefaultVideoDirector, "\\data\\");
+
+		memcpy_s(g_chDefaultVideoAddress, MAX_PATH, g_chDefaultVideoDirector, MAX_PATH);
+		strcat_s(g_chDefaultVideoAddress, g_chLiveCoreVideoName);
+
+		g_pPlumUnpack = new CPlumThread(&g_cLiveCoreUnpack);
+		g_pPlumUnpack->PlumThreadInit();
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Start Unpack Thread.\n");
+
+		g_pPlumUnpack->PlumThreadJoin();	// 等待进程执行
+		if (g_pPlumUnpack)
+		{
+			g_pPlumUnpack->PlumThreadExit();
+			SAFE_DELETE(g_pPlumUnpack);
+			g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Unpack Thread Exit.\n");
+		}
+
+		ZeroMemory(g_chLiveCoreVideoAddress, MAX_PATH);
+		memcpy_s(g_chLiveCoreVideoAddress, MAX_PATH, g_chDefaultVideoUnpack, MAX_PATH);
+	}
 
 	// 开启监视线程
 	g_pPlumMonitor = new CPlumThread(&g_cLiveCoreMonitor);
@@ -101,29 +149,9 @@ BOOL LiveWallpaperInit()
 		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Monitor Thread Exit.\n");
 	}
 
-	// 获取桌面窗口句柄
-	hDeskTop = FindWindowEx(GetDesktopWindow(), NULL, L"Progman", L"Program Manager");
-	hShellDefView = FindWindowEx(hDeskTop, NULL, L"SHELLDLL_DefView", 0);
-	hSysListView32 = FindWindowEx(hShellDefView, NULL, L"SysListView32", L"FolderView");
-
-	g_hDeskTop = hDeskTop;
-	SetParent(g_hWnd, g_hDeskTop);
+	// 设置动态壁纸窗口
+	LiveCoreSetChildWindow(g_hWnd);
 	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Set Window Handle.\n");
-
-	// 分析配置文件
-	AnalyzeConfigFile();
-	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Analyze Config File. Para:LiveCoreMode=%d, Para:LiveCoreShowGraphics=%d, Para:LiveCoreShowGraphicsFont=%d, "\
-		"Para:LiveCoreWallpaperMode=%d, Para:LiveCoreWallpaperAudioMode=%d, Para:LiveCoreLogProcess=%d.\n", g_nLiveCoreMode, g_nLiveCoreShowGraphics, g_nLiveCoreShowGraphicsFont, g_nLiveCoreWallpaperMode, g_nLiveCoreWallpaperAudioMode, g_nLiveCoreLogProcess);
-
-	// 检测模块进程是否存在
-	if (g_nLiveCoreMode == 0)
-	{
-		if (!IsProcessExist(L"LiveWallpaper.exe"))
-		{
-			g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Can not find LiveWallpaper.exe Process.\n");
-			return FALSE;
-		}
-	}
 
 	// 初始化Direct3D
 	g_pMainGraphics = new DirectGraphics;
@@ -185,10 +213,15 @@ BOOL LiveWallpaperInit()
 
 	g_pPlumThread = new CPlumThread(&g_cLiveCoreThread);
 	g_pPlumThread->PlumThreadInit();
-	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Init Decode Thread.\n");
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Init Decode Video Thread.\n");
 
-	g_pPlumThread2 = new CPlumThread(&g_cLiveCoreThread2);
-	g_pPlumThread2->PlumThreadInit();
+	// 播放视频音频
+	if (g_nLiveCoreWallpaperAudioMode != 0)
+	{
+		g_pPlumThread2 = new CPlumThread(&g_cLiveCoreThread2);
+		g_pPlumThread2->PlumThreadInit();
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Init Decode Audio Thread.\n");
+	}
 
 	return TRUE;
 }
@@ -210,10 +243,14 @@ void LiveWallpaperRelease()
 	SAFE_DELETE_ARRAY(g_pArrayU);
 	SAFE_DELETE_ARRAY(g_pArrayV);
 
-	if (g_pPlumThread2)
+	if (g_nLiveCoreWallpaperAudioMode != 0)
 	{
-		g_pPlumThread2->PlumThreadExit();
-		SAFE_DELETE(g_pPlumThread2);
+		if (g_pPlumThread2)
+		{
+			g_pPlumThread2->PlumThreadExit();
+			SAFE_DELETE(g_pPlumThread2);
+		}
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Decode Audio Thread Exit.\n");
 	}
 
 	if (g_pPlumThread)
@@ -221,10 +258,15 @@ void LiveWallpaperRelease()
 		g_pPlumThread->PlumThreadExit();
 		SAFE_DELETE(g_pPlumThread);
 	}
-	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Decode Thread Exit.\n");
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Decode Video Thread Exit.\n");
 
 	SAFE_DELETE(g_pMainfps);
 	SAFE_DELETE(g_pMainGraphics);
+
+	if (g_nLiveCoreVideoMode == 0)
+	{
+		LiveCoreCleanUp(g_chDefaultVideoUnpack);
+	}
 
 	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Process Exit.\n");
 	g_pPlumLogMain.PlumLogExit();
@@ -347,12 +389,12 @@ void LiveWallpaperRender()
 			{
 				DestRect.left = 0;
 				DestRect.right = g_nDeskTopWidth;
-				DestRect.top = (int)((float)g_nDeskTopWidth / (fVideoRate * 2.0f));
+				DestRect.top = (int)(((float)g_nDeskTopHeight - (float)g_nDeskTopWidth / fVideoRate) / 2.0f);
 				DestRect.bottom = DestRect.top + (int)((float)g_nDeskTopWidth / fVideoRate);
 			}
 			else
 			{
-				DestRect.left = (int)((float)g_nDeskTopHeight * fVideoRate / 2.0f);
+				DestRect.left = (int)(((float)g_nDeskTopWidth - (float)g_nDeskTopHeight * fVideoRate) / 2.0f);
 				DestRect.right = DestRect.left + (int)((float)g_nDeskTopHeight * fVideoRate);
 				DestRect.top = 0;
 				DestRect.bottom = g_nDeskTopHeight;

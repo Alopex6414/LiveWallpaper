@@ -943,7 +943,7 @@ void CPlumPack::PlumPackFilePackerA(const char* pSrcArr[], int nArrSize, const c
 // @Para: char* pDest					//解包目标文件路径(不是文件名称!)
 // @Return: None
 //-----------------------------------------------------------------------------
-void CPlumPack::PlumUnPackFilePackerA(const char* pSrc, const char* pDest, int* pSize, int* pCount)
+void CPlumPack::PlumUnPackFilePackerA(const char* pSrc, const char* pDest, int* pSize, int* pCount, char* pUnpack, int nSize)
 {
 	HANDLE hFileSrc;
 
@@ -1002,6 +1002,9 @@ void CPlumPack::PlumUnPackFilePackerA(const char* pSrc, const char* pDest, int* 
 
 		pArray = new char[dwFileReadSize];
 		ReadFile(hFileSrc, pArray, dwFileReadSize, &dwRealReadPackMsg, NULL);
+
+		memset(pUnpack, 0, nSize);
+		memcpy_s(pUnpack, nSize, pDestFileName, (nDestSize + nFileNameSize + 1));
 
 		//解包文件
 		CPlumCrypt* pCrypt = new CPlumCrypt;

@@ -1,8 +1,10 @@
 LiveCore.cfg 配置文件说明
 
-LiveCore_Mode: LiveCore执行模式: 0~组合模式(需要配合LiveWallpaper.exe) 1~独立模式(可以单独执行)
+LiveCore_Mode: LiveCore执行模式: 0~组合模式(需要配合LiveWallpaperUI.exe) 1~独立模式(可以单独执行)
 LiveCore_Show_Graphics: LiveCore是否显示显卡型号和帧速率fps 0~不显示 1~显示
 LiveCore_Show_GraphicsFont: LiveCore显卡型号和帧速率字体大小
 LiveCore_Wallpaper_Mode: LiveCore显示模式: 0~填充 1~适应 2~拉伸 3~平铺 4~居中
 LiveCore_Wallpaper_Audio: LiveCore音频模式: 0~不播放壁纸音频 1~播放壁纸音频
+LiveCore_Video_Mode: LiveCore动态壁纸视频(Video)模式: 0~使用默认视频 1~使用选择视频
+LiveCore_Video_Name: LiveCore动态壁纸视频(Video)视频名称
 LiveCore_Video_Address: LiveCore动态壁纸视频(Video)路径地址

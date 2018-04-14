@@ -4,10 +4,10 @@
 *     All rights reserved.
 *
 * @file		WinMain.cpp
-* @brief	This Program is LiveWallpaperReStart Project.
+* @brief	This Program is LiveWallpaperCleanUp Project.
 * @author	alopex
 * @version	v1.00a
-* @date		2018-03-21
+* @date		2018-04-14
 */
 #include "WinMain.h"
 
@@ -29,7 +29,7 @@ int WINAPI WinMain(IN HINSTANCE hInstance, IN HINSTANCE hPrevInstance, IN LPSTR 
 
 	g_cPlumLog.PlumLogInit();
 
-	g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "ReStart Process: %s\n", lpCmdLine);
+	g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "CleanUp File Path: %s\n", lpCmdLine);
 
 	nResult = strcmp(lpCmdLine, "");
 	if (nResult == 0)
@@ -39,19 +39,9 @@ int WINAPI WinMain(IN HINSTANCE hInstance, IN HINSTANCE hPrevInstance, IN LPSTR 
 		return 1;
 	}
 
-	BOOL bResult;
-
-	int nLen;
-	WCHAR* pArr = NULL;
-
-	nLen = MultiByteToWideChar(CP_ACP, 0, lpCmdLine, strlen(lpCmdLine), NULL, 0);
-	pArr = new WCHAR[nLen + 1];
-	memset(pArr, 0, (nLen + 1) * sizeof(WCHAR));
-	MultiByteToWideChar(CP_ACP, 0, lpCmdLine, strlen(lpCmdLine), pArr, nLen);
-
 	while (true)
 	{
-		if (!IsProcessExist(pArr))
+		if (!IsProcessExist(L"LiveWallpaperCore.exe"))
 		{
 			g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "Check Process Status: Process Exit.\n");
 			Sleep(100);
@@ -61,13 +51,12 @@ int WINAPI WinMain(IN HINSTANCE hInstance, IN HINSTANCE hPrevInstance, IN LPSTR 
 		Sleep(100);
 	}
 
-	delete[] pArr;
-	pArr = NULL;
+	BOOL bResult;
 
-	bResult = LiveReStartProcess(lpCmdLine);
+	bResult = LiveCleanUpFile(lpCmdLine);
 	if (!bResult)
 	{
-		g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "Process Exception Exit! Return Value=2, Can not ReStart Process!\n");
+		g_cPlumLog.PlumLogWriteExtend(__FILE__, __LINE__, "Process Exception Exit! Return Value=2, Can not CleanUp File!\n");
 		g_cPlumLog.PlumLogExit();
 		return 2;
 	}

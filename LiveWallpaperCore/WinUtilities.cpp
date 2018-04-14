@@ -77,7 +77,7 @@ BOOL InitWndInstance(HINSTANCE hInstance, int nCmdShow, WndPara* lpsWndPara, LPC
 	SetRect(&Rect, 0, 0, lpsWndPara->nWndWidth, lpsWndPara->nWndHeight);//设置窗口区域矩形
 	AdjustWindowRect(&Rect, WS_POPUP, false);//窗口具有标题栏、菜单栏、最小化窗口
 
-	hWnd = CreateWindow(L"WinClass", lpsWndPara->lpszTitle, WS_POPUP, CW_USEDEFAULT, 0, (Rect.right - Rect.left), (Rect.bottom - Rect.top), NULL, NULL, hInstance, NULL);//初始化窗口
+	hWnd = CreateWindow(L"WinClass", lpsWndPara->lpszTitle, WS_POPUP, CW_USEDEFAULT, CW_USEDEFAULT, (Rect.right - Rect.left), (Rect.bottom - Rect.top), NULL, NULL, hInstance, NULL);//初始化窗口
 	if (!hWnd)
 	{
 		return FALSE;//初始化窗口失败(Exit)
@@ -172,11 +172,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			if (nRet == IDR_MENU_MAIN_RESTART)
 			{
 				LiveCoreReStartProcess("LiveWallpaperCore.exe");
-				SendMessage(g_hWnd, WM_CLOSE, wParam, lParam);
+				::PostMessage(g_hWnd, WM_CLOSE, wParam, lParam);
 			}
 			if (nRet == IDR_MENU_MAIN_EXIT)
 			{
-				SendMessage(g_hWnd, WM_CLOSE, wParam, lParam);
+				::PostMessage(g_hWnd, WM_CLOSE, wParam, lParam);
 			}
 		}
 		break;

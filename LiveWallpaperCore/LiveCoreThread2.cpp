@@ -131,7 +131,7 @@ void WINAPI CLiveCoreThread2::PlumThreadRun()
 	//nb_samples: AAC-1024 MP3-1152  
 	int out_nb_samples = pCodecCtx->frame_size;
 	AVSampleFormat out_sample_fmt = AV_SAMPLE_FMT_S16;
-	int out_sample_rate = 44100;
+	int out_sample_rate = pCodecCtx->sample_rate;
 	int out_channels = av_get_channel_layout_nb_channels(out_channel_layout);
 	//Out Buffer Size  
 	int out_buffer_size = av_samples_get_buffer_size(NULL, out_channels, out_nb_samples, out_sample_fmt, 1);
@@ -152,7 +152,7 @@ void WINAPI CLiveCoreThread2::PlumThreadRun()
 	wanted_spec.format = AUDIO_S16SYS;			//采样音频数据格式
 	wanted_spec.channels = pCodecCtx->channels;	//采样通道
 	wanted_spec.silence = 0;					//采样静音值
-	wanted_spec.samples = 1024;					//采样缓冲区大小
+	wanted_spec.samples = pCodecCtx->frame_size;//采样缓冲区大小
 	wanted_spec.callback = Audio_CallBack;		//音频CallBack
 	wanted_spec.userdata = pCodecCtx;
 
@@ -173,35 +173,46 @@ void WINAPI CLiveCoreThread2::PlumThreadRun()
 		in_channel_layout, pCodecCtx->sample_fmt, pCodecCtx->sample_rate, 0, NULL);
 	swr_init(au_convert_ctx);
 
-	//Play  
-	SDL_PauseAudio(0);
-
-	while (av_read_frame(pFormatCtx, packet) >= 0) 
+	while (true)
 	{
-		if (packet->stream_index == AudioIndex)
+		//Play
+		SDL_PauseAudio(0);
+
+		while (av_read_frame(pFormatCtx, packet) >= 0)
 		{
-			ret = avcodec_decode_audio4(pCodecCtx, pFrame, &got_picture, packet);
-			if (ret < 0) 
+			if (packet->stream_index == AudioIndex)
 			{
-				return;
+				ret = avcodec_decode_audio4(pCodecCtx, pFrame, &got_picture, packet);
+				if (ret < 0)
+				{
+					return;
+				}
+				if (got_picture > 0)
+				{
+					swr_convert(au_convert_ctx, &out_buffer, MAX_AUDIO_FRAME_SIZE, (const uint8_t **)pFrame->data, pFrame->nb_samples);
+					index++;
+				}
+
+
+				while (audio_len>0)//Wait until finish  
+					SDL_Delay(1);
+
+				//Set audio buffer (PCM data)  
+				audio_chunk = (Uint8 *)out_buffer;
+				//Audio buffer length  
+				audio_len = out_buffer_size;
+				audio_pos = audio_chunk;
 			}
-			if (got_picture > 0) 
-			{
-				swr_convert(au_convert_ctx, &out_buffer, MAX_AUDIO_FRAME_SIZE, (const uint8_t **)pFrame->data, pFrame->nb_samples);
-				index++;
-			}
-
-
-			while (audio_len>0)//Wait until finish  
-				SDL_Delay(1);
-
-			//Set audio buffer (PCM data)  
-			audio_chunk = (Uint8 *)out_buffer;
-			//Audio buffer length  
-			audio_len = out_buffer_size;
-			audio_pos = audio_chunk; 
+			av_free_packet(packet);
 		}
-		av_free_packet(packet);
+
+		ret = av_seek_frame(pFormatCtx, AudioIndex, pFormatCtx->streams[AudioIndex]->start_time, 0);
+		if (ret < 0)
+		{
+			break;
+		}
+
+		avcodec_flush_buffers(pFormatCtx->streams[AudioIndex]->codec);
 	}
 
 	swr_free(&au_convert_ctx);
