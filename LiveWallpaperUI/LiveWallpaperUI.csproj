@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>LiveWallpaperUI</RootNamespace>
     <AssemblyName>LiveWallpaperUI</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <PublishUrl>publish\</PublishUrl>
@@ -26,6 +26,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -113,6 +114,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="LiveCore.ico" />
+    <None Include="Resource\Button\control_hor.png" />
+    <None Include="Resource\Button\control_focus.png" />
+    <None Include="Resource\Button\control.png" />
+    <None Include="Resource\Button\view_hor.png" />
+    <None Include="Resource\Button\view_focus.png" />
+    <None Include="Resource\Button\view.png" />
+    <None Include="Resource\Button\min_hor.png" />
+    <None Include="Resource\Button\min_focus.png" />
+    <None Include="Resource\Button\min.png" />
+    <None Include="Resource\Title\title.png" />
     <None Include="Resource\Picture\SakuraIcon1.png" />
     <None Include="Resource\Picture\SakuraIcon.png" />
     <None Include="Resource\Button\close_hor.png" />
