@@ -12,6 +12,8 @@
 #include "WinProcess.h"
 #include "WinUtilities.h"
 
+#include "LiveUI.h"
+
 //------------------------------------------------------------------
 // @Function:	 SetWindowParameterCallBack(void)
 // @Purpose: WinMain设置窗口相关参数回调函数
@@ -38,6 +40,14 @@ WndPara* SetWindowParameterCallBack(void)
 //------------------------------------------------------------------
 BOOL InitWindowExtraCallBack(void)
 {
+	BOOL bRet = FALSE;
+
+	bRet = g_cLiveUI.InitWindowExtra();
+	if (!bRet)
+	{
+		return FALSE;
+	}
+
 	return TRUE;
 }
 
@@ -50,4 +60,5 @@ BOOL InitWindowExtraCallBack(void)
 //------------------------------------------------------------------
 void ReleaseWindowExtraCallBack(void)
 {
+	g_cLiveUI.ReleaseWindowExtra();
 }

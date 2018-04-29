@@ -12,6 +12,8 @@
 */
 #include "WinUtilities.h"
 
+#include "LiveUI.h"
+
 //WinUtilities主要用于Win32窗口项目注册窗口、初始化、消息处理...
 //Variable
 HWND g_hWnd;					//窗口句柄
@@ -137,7 +139,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_TIMER:
-		break;
+		return g_cLiveUI.OnTimer(wParam, lParam);
+	case WM_CLOSE:
+		return g_cLiveUI.OnClose(wParam, lParam);
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;

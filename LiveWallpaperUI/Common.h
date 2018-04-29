@@ -31,5 +31,11 @@
 //Include ATL Header File
 #include <atlimage.h>
 
+//Include Lua Header File
+#include "lua.hpp"
+
+//Include Lua Library
+#pragma comment(lib, "liblua.lib")
+
 #endif // !__COMMON_H_
 
