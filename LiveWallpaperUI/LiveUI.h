@@ -24,10 +24,14 @@
 class CLiveUI
 {
 private:
+	//<<<Window Alpha
 	int m_nWindowAlpha;				//窗口Alpha值
 	bool m_bWindowState;			//窗口Alpha状态
 	bool m_bWindowClosed;			//窗口关闭状态
 	bool m_bWindowClosing;			//窗口正在关闭状态
+
+	//<<<Mouse Point
+	POINT m_sMousePoint;			//鼠标坐标值
 
 	//<<<Lua Script
 	CLiveLua* m_pLiveLua;			//窗口Lua文件
@@ -56,6 +60,8 @@ public:
 public:
 	LRESULT OnTimer(WPARAM wParam, LPARAM lParam);	//定时消息响应
 	LRESULT OnClose(WPARAM wParam, LPARAM lParam);	//关闭消息响应
+	LRESULT OnMouseMove(WPARAM wParam, LPARAM lParam);	//鼠标移动消息响应
+	LRESULT OnMouseLeave(WPARAM wParam, LPARAM lParam);	//鼠标离开消息响应
 
 };
 

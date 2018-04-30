@@ -255,3 +255,15 @@ LRESULT CLiveUI::OnClose(WPARAM wParam, LPARAM lParam)
 
 	return lr;
 }
+
+//------------------------------------------------------------------
+// @Function:	 OnMouseMove()
+// @Purpose: CLiveUI Û±Í“∆∂ØœÏ”¶
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+LRESULT CLiveUI::OnMouseMove(WPARAM wParam, LPARAM lParam)
+{
+	return DefWindowProc(g_hWnd, WM_MOUSEMOVE, wParam, lParam);
+}
