@@ -945,6 +945,12 @@
     <ClInclude Include="LiveCoreUnpackThread.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LiveCoreWaitThread.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveCoreWait.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -1019,6 +1025,12 @@
       <Filter>PlumLibrary</Filter>
     </ClCompile>
     <ClCompile Include="LiveCoreUnpackThread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveCoreWaitThread.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveCoreWait.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
