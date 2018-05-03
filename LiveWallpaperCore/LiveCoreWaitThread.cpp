@@ -43,5 +43,11 @@ CLiveCoreWaitThread::~CLiveCoreWaitThread()
 //------------------------------------------------------------------
 void WINAPI CLiveCoreWaitThread::PlumThreadRun()
 {
+	m_cLiveCoreWait.LiveCoreWaitInit();
 
+	//while (true)	//这里需要添加推出等待的条件...
+	//{
+		m_cLiveCoreWait.LiveCoreWaitUpdate();
+		m_cLiveCoreWait.LiveCoreWaitRender();
+	//}
 }

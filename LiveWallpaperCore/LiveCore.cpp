@@ -14,6 +14,7 @@
 #include "LiveCoreThread2.h"
 #include "LiveCoreMonitor.h"
 #include "LiveCoreUnpackThread.h"
+#include "LiveCoreWaitThread.h"
 #include "LiveCoreFunction.h"
 
 #include "WinProcess.h"
@@ -45,6 +46,9 @@ CPlumThread* g_pPlumMonitor = NULL;			// CPlumThread类指针
 
 CLiveCoreUnpackThread g_cLiveCoreUnpack;	// CLiveCoreMonitor类实例
 CPlumThread* g_pPlumUnpack = NULL;			// CPlumThread类指针
+
+CLiveCoreWaitThread g_cLiveCoreWait;		// CLiveCoreWait类实例
+CPlumThread* g_pPlumWait = NULL;			// CPlumThread类指针
 
 CPlumLog g_pPlumLogMain;					// CPlumLog类实例
 
@@ -98,6 +102,19 @@ BOOL LiveWallpaperInit()
 			g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Can not find LiveWallpaperUI.exe Process.\n");
 			return FALSE;
 		}
+	}
+
+	// 启用等待线程
+	g_pPlumWait = new CPlumThread(&g_cLiveCoreWait);
+	g_pPlumWait->PlumThreadInit();
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Start Wait Thread.\n");
+
+	g_pPlumWait->PlumThreadJoin();	// 等待进程执行
+	if (g_pPlumWait)
+	{
+		g_pPlumWait->PlumThreadExit();
+		SAFE_DELETE(g_pPlumWait);
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Wait Thread Exit.\n");
 	}
 
 	// 是否启用默认视频

@@ -951,6 +951,9 @@
     <ClInclude Include="LiveCoreWait.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="DirectTexture.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -1032,6 +1035,9 @@
     </ClCompile>
     <ClCompile Include="LiveCoreWait.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectTexture.cpp">
+      <Filter>DirectLibrary</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

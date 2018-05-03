@@ -139,6 +139,7 @@
     <ClInclude Include="DirectFont.h" />
     <ClInclude Include="DirectGraphics.h" />
     <ClInclude Include="DirectSurface.h" />
+    <ClInclude Include="DirectTexture.h" />
     <ClInclude Include="DirectThreadSafe.h" />
     <ClInclude Include="DirectX\Include\audiodefs.h" />
     <ClInclude Include="DirectX\Include\comdecl.h" />
@@ -439,6 +440,7 @@
     <ClCompile Include="DirectFont.cpp" />
     <ClCompile Include="DirectGraphics.cpp" />
     <ClCompile Include="DirectSurface.cpp" />
+    <ClCompile Include="DirectTexture.cpp" />
     <ClCompile Include="DirectThreadSafe.cpp" />
     <ClCompile Include="LiveCore.cpp" />
     <ClCompile Include="LiveCoreFunction.cpp" />

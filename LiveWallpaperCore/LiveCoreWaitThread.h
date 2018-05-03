@@ -12,9 +12,13 @@
 #pragma once
 
 #include "PlumThread.h"
+#include "LiveCoreWait.h"
 
 class CLiveCoreWaitThread :public CPlumThreadBase
 {
+private:
+	CLiveCoreWait m_cLiveCoreWait;
+
 public:
 	CLiveCoreWaitThread();
 	~CLiveCoreWaitThread();
