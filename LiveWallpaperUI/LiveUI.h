@@ -16,6 +16,11 @@
 
 //Include Common Header File
 #include "Common.h"
+#include "LiveBackGround.h"
+
+//Include PlumLibrary Header File
+#include "PlumLog.h"
+#include "PlumConsole.h"
 
 //Include Lua Srcipt Class
 #include "LiveLua.h"
@@ -31,6 +36,7 @@ private:
 	bool m_bWindowClosing;			//窗口正在关闭状态
 
 	//<<<Mouse Point
+	bool m_bMouseTrack;				//鼠标离开客户区标志
 	POINT m_sMousePoint;			//鼠标坐标值
 
 	//<<<Lua Script
@@ -57,11 +63,17 @@ public:
 	//<<<重绘窗口
 	void RePaintWindow();			//重绘窗口
 
+protected:
+	CLiveBackGround m_cLiveBackGround;		//窗口背景
+
 public:
 	LRESULT OnTimer(WPARAM wParam, LPARAM lParam);	//定时消息响应
 	LRESULT OnClose(WPARAM wParam, LPARAM lParam);	//关闭消息响应
 	LRESULT OnMouseMove(WPARAM wParam, LPARAM lParam);	//鼠标移动消息响应
 	LRESULT OnMouseLeave(WPARAM wParam, LPARAM lParam);	//鼠标离开消息响应
+	LRESULT OnLButtonUp(WPARAM wParam, LPARAM lParam);	//鼠标左键释放消息响应
+	LRESULT OnLButtonDown(WPARAM wParam, LPARAM lParam);//鼠标左键按下消息响应
+	LRESULT OnLButtonDblClk(WPARAM wParam, LPARAM lParam);	//鼠标左键双击消息响应
 
 };
 

@@ -16,6 +16,9 @@
     <Filter Include="Lua">
       <UniqueIdentifier>{7bf72eca-0af2-40aa-8fdd-a9c347462959}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PlumLibrary">
+      <UniqueIdentifier>{e2f376d4-e83a-404f-8686-47b2b490f0b4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMain.h">
@@ -120,6 +123,15 @@
     <ClInclude Include="LiveLua.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PlumConsole.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="PlumLog.h">
+      <Filter>PlumLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveBackGround.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -138,6 +150,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LiveLua.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumConsole.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="PlumLog.cpp">
+      <Filter>PlumLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveBackGround.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

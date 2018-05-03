@@ -63,6 +63,8 @@ void CLiveUI::ConstructExtra()
 	m_nAnimationAlphaMin = 0;
 	m_nAnimationAlphaMax = 255;
 	m_nAnimationAlphaStep = 1;
+
+	m_bMouseTrack = true;
 }
 
 //------------------------------------------------------------------
@@ -91,6 +93,10 @@ void CLiveUI::DestructExtra()
 BOOL CLiveUI::InitWindowExtra()
 {
 	BOOL bRet = FALSE;
+
+	//设置窗口尺寸
+	m_cLiveBackGround.LiveBackGround_SetWindow(USER_SCREENWIDTH, USER_SCREENHEIGHT);
+	m_cLiveBackGround.LiveBackGroundInit("frame\\Bk\\Azure.png");
 
 	//初始化Lua
 	m_pLiveLua = new CLiveLua("script\\LiveUI.lua");
@@ -140,26 +146,51 @@ void CLiveUI::RePaintWindow()
 	HDC hMemDC;
 	HBITMAP hBitmap;
 	HBRUSH hBrush;
+	HFONT hFont;
 	RECT Rect;
 	int nWidth;
 	int nHeight;
 
+	//用户区域大小
 	GetClientRect(g_hWnd, &Rect);
 	nWidth = Rect.right - Rect.left;
 	nHeight = Rect.bottom - Rect.top;
 
+	//绘制准备
 	hDC = GetDC(g_hWnd);
 	hMemDC = CreateCompatibleDC(hDC);
-	hBitmap = CreateCompatibleBitmap(hMemDC, nWidth, nHeight);
+	hBitmap = CreateCompatibleBitmap(hDC, nWidth, nHeight);
 
 	hBrush = CreateSolidBrush(RGB(255, 255, 255));
+	hFont = CreateFontW(-14, -7, 0, 0, 400, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS, DEFAULT_QUALITY, FF_DONTCARE, _T("Consola"));
 
+	SelectObject(hMemDC, hFont);
 	SelectObject(hMemDC, hBrush);
 	SelectObject(hMemDC, hBitmap);
+
+	//绘制窗口背景
 	FillRect(hMemDC, &Rect, hBrush);
 
+	//绘制窗口背景
+	m_cLiveBackGround.LiveBackGroundPaint(hMemDC);
+	
+	//绘制调试信息
+	char chArr[MAX_PATH] = { 0 };
+	
+	SetBkMode(hMemDC, TRANSPARENT);
+
+	memset(chArr, 0, MAX_PATH);
+	sprintf_s(chArr, "X:%d", m_sMousePoint.x);
+	TextOutA(hMemDC, 0, 0, chArr, strlen(chArr));
+
+	memset(chArr, 0, MAX_PATH);
+	sprintf_s(chArr, "Y:%d", m_sMousePoint.y);
+	TextOutA(hMemDC, 0, 14, chArr, strlen(chArr));
+
+	//内存DC拷贝到窗口DC
 	BitBlt(hDC, 0, 0, USER_SCREENWIDTH, USER_SCREENHEIGHT, hMemDC, 0, 0, SRCCOPY);
 
+	DeleteObject(hFont);
 	DeleteObject(hBrush);
 	DeleteObject(hBitmap);
 	DeleteDC(hMemDC);
@@ -265,5 +296,74 @@ LRESULT CLiveUI::OnClose(WPARAM wParam, LPARAM lParam)
 //------------------------------------------------------------------
 LRESULT CLiveUI::OnMouseMove(WPARAM wParam, LPARAM lParam)
 {
+	m_sMousePoint.x = (LONG)LOWORD(lParam);
+	m_sMousePoint.y = (LONG)HIWORD(lParam);
+
+	if (m_bMouseTrack)
+	{
+		TRACKMOUSEEVENT csTME = { 0 };
+		csTME.cbSize = sizeof(csTME);
+		csTME.dwFlags = TME_LEAVE;
+		csTME.hwndTrack = g_hWnd;
+		::_TrackMouseEvent(&csTME);
+
+		m_bMouseTrack = false;
+	}
+
+
+
 	return DefWindowProc(g_hWnd, WM_MOUSEMOVE, wParam, lParam);
+}
+
+//------------------------------------------------------------------
+// @Function:	 OnMouseLeave()
+// @Purpose: CLiveUI鼠标离开响应
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+LRESULT CLiveUI::OnMouseLeave(WPARAM wParam, LPARAM lParam)
+{
+	m_sMousePoint.x = 0;
+	m_sMousePoint.y = 0;
+
+	m_bMouseTrack = true;
+
+	return DefWindowProc(g_hWnd, WM_MOUSELEAVE, wParam, lParam);
+}
+
+//------------------------------------------------------------------
+// @Function:	 OnLButtonUp()
+// @Purpose: CLiveUI鼠标左键释放
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+LRESULT CLiveUI::OnLButtonUp(WPARAM wParam, LPARAM lParam)
+{
+	return DefWindowProc(g_hWnd, WM_LBUTTONUP, wParam, lParam);
+}
+
+//------------------------------------------------------------------
+// @Function:	 OnLButtonDown()
+// @Purpose: CLiveUI鼠标左键按下
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+LRESULT CLiveUI::OnLButtonDown(WPARAM wParam, LPARAM lParam)
+{
+	return DefWindowProc(g_hWnd, WM_LBUTTONDOWN, wParam, lParam);
+}
+
+//------------------------------------------------------------------
+// @Function:	 OnLButtonDblClk()
+// @Purpose: CLiveUI鼠标左键双击
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+LRESULT CLiveUI::OnLButtonDblClk(WPARAM wParam, LPARAM lParam)
+{
+	return DefWindowProc(g_hWnd, WM_NCLBUTTONDBLCLK, wParam, lParam);
 }

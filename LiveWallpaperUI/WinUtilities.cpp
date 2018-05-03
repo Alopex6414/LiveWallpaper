@@ -145,13 +145,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_MOUSEMOVE:
 		return g_cLiveUI.OnMouseMove(wParam, lParam);
 	case WM_MOUSELEAVE:
-		break;
+		return g_cLiveUI.OnMouseLeave(wParam, lParam);
 	case WM_LBUTTONUP:
-		break;
+		return g_cLiveUI.OnLButtonUp(wParam, lParam);
 	case WM_LBUTTONDOWN:
-		break;
+		return g_cLiveUI.OnLButtonDown(wParam, lParam);
 	case WM_LBUTTONDBLCLK:
-		break;
+		return g_cLiveUI.OnLButtonDblClk(wParam, lParam);
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;

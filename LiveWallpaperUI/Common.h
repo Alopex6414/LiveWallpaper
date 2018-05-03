@@ -28,6 +28,8 @@
 #include <time.h>
 #include <mmsystem.h>
 
+#include <CommCtrl.h>
+
 //Include ATL Header File
 #include <atlimage.h>
 

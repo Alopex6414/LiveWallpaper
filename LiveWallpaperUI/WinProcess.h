@@ -22,7 +22,7 @@
 
 //Macro Definition
 #ifndef USER_SCREENWIDTH
-#define USER_SCREENWIDTH	640				//窗口宽度
+#define USER_SCREENWIDTH	640			//窗口宽度
 #endif
 
 #ifndef USER_SCREENHEIGHT
