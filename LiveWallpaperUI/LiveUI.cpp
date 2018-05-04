@@ -59,6 +59,9 @@ void CLiveUI::ConstructExtra()
 	m_bWindowClosed = false;
 	m_bWindowClosing = false;
 
+	m_nFrame = 0;
+	m_bFrame = false;
+
 	m_pLiveLua = NULL;
 	m_nAnimationAlphaMin = 0;
 	m_nAnimationAlphaMax = 255;
@@ -98,6 +101,42 @@ BOOL CLiveUI::InitWindowExtra()
 	m_cLiveBackGround.LiveBackGround_SetWindow(USER_SCREENWIDTH, USER_SCREENHEIGHT);
 	m_cLiveBackGround.LiveBackGroundInit("frame\\Bk\\Azure.png");
 
+	//设置容器尺寸
+	m_cLiveBackPanel.LiveBackPanel_SetMove(0, 475);
+	m_cLiveBackPanel.LiveBackPanel_SetWindow(0, 440, 640, 40);
+	m_cLiveBackPanel.LiveBackPanelInit("frame\\Panel\\Panel.png");
+
+	//设置图标窗口尺寸
+	m_cLiveBackIconHome.LiveBackIconSetMove(42, 479);
+	m_cLiveBackIconHome.LiveButton_SetWindow(42, 444, 32, 32);
+	m_cLiveBackIconHome.LiveButtonInit("frame\\Button\\Home.png");
+
+	m_cLiveBackIconPhone.LiveBackIconSetMove(84, 479);
+	m_cLiveBackIconPhone.LiveButton_SetWindow(84, 444, 32, 32);//+20
+	m_cLiveBackIconPhone.LiveButtonInit("frame\\Button\\Phone.png");
+
+	m_cLiveBackIconConfig.LiveBackIconSetMove(126, 479);
+	m_cLiveBackIconConfig.LiveButton_SetWindow(126, 444, 32, 32);//+20
+	m_cLiveBackIconConfig.LiveButtonInit("frame\\Button\\Config.png");
+
+	m_cLiveBackIconCard.LiveBackIconSetMove(178, 479);
+	m_cLiveBackIconCard.LiveButton_SetWindow(178, 444, 32, 32);//+20
+	m_cLiveBackIconCard.LiveButtonInit("frame\\Button\\Card.png");
+
+	m_cLiveBackIconWallpaper.LiveBackIconSetMove(220, 479);
+	m_cLiveBackIconWallpaper.LiveButton_SetWindow(220, 444, 32, 32);//+20
+	m_cLiveBackIconWallpaper.LiveButtonInit("frame\\Button\\Wallpaper.png");
+	
+	m_cLiveBackIconColor.LiveBackIconSetMove(262, 479);
+	m_cLiveBackIconColor.LiveButton_SetWindow(262, 444, 32, 32);//+20
+	m_cLiveBackIconColor.LiveButtonInit("frame\\Button\\Color.png");
+
+	m_cLiveBackIconChange.LiveBackIconSetMove(304, 479);
+	m_cLiveBackIconChange.LiveButton_SetWindow(304, 444, 32, 32);//+20
+	m_cLiveBackIconChange.LiveButtonInit("frame\\Button\\Change.png");
+
+	m_cLiveBackIconHome.LiveBackIconSetClick(true);
+
 	//初始化Lua
 	m_pLiveLua = new CLiveLua("script\\LiveUI.lua");
 	bRet = m_pLiveLua->LiveLuaInit();
@@ -130,6 +169,71 @@ BOOL CLiveUI::InitWindowExtra()
 //------------------------------------------------------------------
 void CLiveUI::ReleaseWindowExtra()
 {
+
+}
+
+//------------------------------------------------------------------
+// @Function:	 UpdateWindow()
+// @Purpose: CLiveUI窗口刷新
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+void CLiveUI::UpdateWindow()
+{
+	static bool bStart = false;
+	static bool bClose = false;
+	static double dVPanel = 5.0;
+
+	//<<<帧计数
+	m_nFrame++;
+	if (m_nFrame > 16 && (!bStart))
+	{
+		m_nFrame = 16;
+		m_bFrame = true;
+	}
+
+	//<<<程式开始Panel变化
+	if (m_bFrame)
+	{
+		m_cLiveBackPanel.m_nMoveY -= (int)dVPanel;
+		m_cLiveBackIconHome.m_nMoveY -= (int)dVPanel;
+		m_cLiveBackIconPhone.m_nMoveY -= (int)dVPanel;
+		m_cLiveBackIconConfig.m_nMoveY -= (int)dVPanel;
+		m_cLiveBackIconCard.m_nMoveY -= (int)dVPanel;
+		m_cLiveBackIconWallpaper.m_nMoveY -= (int)dVPanel;
+		m_cLiveBackIconColor.m_nMoveY -= (int)dVPanel;
+		m_cLiveBackIconChange.m_nMoveY -= (int)dVPanel;
+
+		dVPanel -= 0.3125;
+		if (dVPanel <= 0.0)
+		{
+			dVPanel = 0.0;
+			bStart = true;
+			m_bFrame = false;
+		}
+
+	}
+
+	//<<<程式结束Panel变化
+	if (m_bWindowClosing && (!bClose))
+	{
+		m_cLiveBackPanel.m_nMoveY += (int)dVPanel;
+		m_cLiveBackIconHome.m_nMoveY += (int)dVPanel;
+		m_cLiveBackIconPhone.m_nMoveY += (int)dVPanel;
+		m_cLiveBackIconConfig.m_nMoveY += (int)dVPanel;
+		m_cLiveBackIconCard.m_nMoveY += (int)dVPanel;
+		m_cLiveBackIconWallpaper.m_nMoveY += (int)dVPanel;
+		m_cLiveBackIconColor.m_nMoveY += (int)dVPanel;
+		m_cLiveBackIconChange.m_nMoveY += (int)dVPanel;
+
+		dVPanel += 0.3125;
+		if (dVPanel > 5.0)
+		{
+			dVPanel = 5.0;
+			bClose = true;
+		}
+	}
 
 }
 
@@ -173,6 +277,18 @@ void CLiveUI::RePaintWindow()
 
 	//绘制窗口背景
 	m_cLiveBackGround.LiveBackGroundPaint(hMemDC);
+
+	//绘制容器背景
+	m_cLiveBackPanel.LiveBackPanelPaint(hMemDC);
+
+	//绘制图标
+	m_cLiveBackIconHome.LiveBackIconPaint(hMemDC, m_sMousePoint);
+	m_cLiveBackIconPhone.LiveBackIconPaint(hMemDC, m_sMousePoint);
+	m_cLiveBackIconConfig.LiveBackIconPaint(hMemDC, m_sMousePoint);
+	m_cLiveBackIconCard.LiveBackIconPaint(hMemDC, m_sMousePoint);
+	m_cLiveBackIconWallpaper.LiveBackIconPaint(hMemDC, m_sMousePoint);
+	m_cLiveBackIconColor.LiveBackIconPaint(hMemDC, m_sMousePoint);
+	m_cLiveBackIconChange.LiveBackIconPaint(hMemDC, m_sMousePoint);
 	
 	//绘制调试信息
 	char chArr[MAX_PATH] = { 0 };
@@ -197,6 +313,9 @@ void CLiveUI::RePaintWindow()
 	ReleaseDC(g_hWnd, hDC);
 }
 
+//==================================================================
+// ~算法函数
+//==================================================================
 
 //------------------------------------------------------------------
 // @Function:	 ShowWindowAlpha()
@@ -231,6 +350,103 @@ void CLiveUI::ShowWindowAlpha(bool& bState, int& nAlpha)
 	SetLayeredWindowAttributes(g_hWnd, 0, nAlpha, LWA_ALPHA);
 }
 
+//------------------------------------------------------------------
+// @Function:	 LButtonClickEvent()
+// @Purpose: CLiveUI窗口鼠标左键按下事件
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+void CLiveUI::LButtonClickEvent()
+{
+	//<<<检测--主页按下
+	if (m_cLiveBackIconHome.LiveBackIconIsHover(m_sMousePoint))
+	{
+		m_cLiveBackIconHome.LiveBackIconSetClick(true);
+		m_cLiveBackIconPhone.LiveBackIconSetClick(false);
+		m_cLiveBackIconConfig.LiveBackIconSetClick(false);
+		m_cLiveBackIconCard.LiveBackIconSetClick(false);
+		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
+		m_cLiveBackIconColor.LiveBackIconSetClick(false);
+		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+	}
+
+	//<<<检测--电话按下
+	if (m_cLiveBackIconPhone.LiveBackIconIsHover(m_sMousePoint))
+	{
+		m_cLiveBackIconHome.LiveBackIconSetClick(false);
+		m_cLiveBackIconPhone.LiveBackIconSetClick(true);
+		m_cLiveBackIconConfig.LiveBackIconSetClick(false);
+		m_cLiveBackIconCard.LiveBackIconSetClick(false);
+		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
+		m_cLiveBackIconColor.LiveBackIconSetClick(false);
+		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+	}
+
+	//<<<检测--设置按下
+	if (m_cLiveBackIconConfig.LiveBackIconIsHover(m_sMousePoint))
+	{
+		m_cLiveBackIconHome.LiveBackIconSetClick(false);
+		m_cLiveBackIconPhone.LiveBackIconSetClick(false);
+		m_cLiveBackIconConfig.LiveBackIconSetClick(true);
+		m_cLiveBackIconCard.LiveBackIconSetClick(false);
+		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
+		m_cLiveBackIconColor.LiveBackIconSetClick(false);
+		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+	}
+
+	//<<<检测--卡片按下
+	if (m_cLiveBackIconCard.LiveBackIconIsHover(m_sMousePoint))
+	{
+		m_cLiveBackIconHome.LiveBackIconSetClick(false);
+		m_cLiveBackIconPhone.LiveBackIconSetClick(false);
+		m_cLiveBackIconConfig.LiveBackIconSetClick(false);
+		m_cLiveBackIconCard.LiveBackIconSetClick(true);
+		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
+		m_cLiveBackIconColor.LiveBackIconSetClick(false);
+		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+	}
+
+	//<<<检测--壁纸按下
+	if (m_cLiveBackIconWallpaper.LiveBackIconIsHover(m_sMousePoint))
+	{
+		m_cLiveBackIconHome.LiveBackIconSetClick(false);
+		m_cLiveBackIconPhone.LiveBackIconSetClick(false);
+		m_cLiveBackIconConfig.LiveBackIconSetClick(false);
+		m_cLiveBackIconCard.LiveBackIconSetClick(false);
+		m_cLiveBackIconWallpaper.LiveBackIconSetClick(true);
+		m_cLiveBackIconColor.LiveBackIconSetClick(false);
+		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+	}
+
+	//<<<检测--彩色按下
+	if (m_cLiveBackIconColor.LiveBackIconIsHover(m_sMousePoint))
+	{
+		m_cLiveBackIconHome.LiveBackIconSetClick(false);
+		m_cLiveBackIconPhone.LiveBackIconSetClick(false);
+		m_cLiveBackIconConfig.LiveBackIconSetClick(false);
+		m_cLiveBackIconCard.LiveBackIconSetClick(false);
+		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
+		m_cLiveBackIconColor.LiveBackIconSetClick(true);
+		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+	}
+
+	//<<<检测--变换按下
+	if (m_cLiveBackIconChange.LiveBackIconIsHover(m_sMousePoint))
+	{
+		m_cLiveBackIconHome.LiveBackIconSetClick(false);
+		m_cLiveBackIconPhone.LiveBackIconSetClick(false);
+		m_cLiveBackIconConfig.LiveBackIconSetClick(false);
+		m_cLiveBackIconCard.LiveBackIconSetClick(false);
+		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
+		m_cLiveBackIconColor.LiveBackIconSetClick(false);
+		m_cLiveBackIconChange.LiveBackIconSetClick(true);
+	}
+
+	//<<<...
+
+}
+
 //==================================================================
 // ~消息响应
 //==================================================================
@@ -250,6 +466,7 @@ LRESULT CLiveUI::OnTimer(WPARAM wParam, LPARAM lParam)
 		ShowWindowAlpha(m_bWindowState, m_nWindowAlpha);
 		break;
 	case LIVEUI_TIMER_REPAINT:
+		UpdateWindow();
 		RePaintWindow();
 		break;
 	default:
@@ -353,6 +570,7 @@ LRESULT CLiveUI::OnLButtonUp(WPARAM wParam, LPARAM lParam)
 //------------------------------------------------------------------
 LRESULT CLiveUI::OnLButtonDown(WPARAM wParam, LPARAM lParam)
 {
+	LButtonClickEvent();
 	return DefWindowProc(g_hWnd, WM_LBUTTONDOWN, wParam, lParam);
 }
 
@@ -365,5 +583,6 @@ LRESULT CLiveUI::OnLButtonDown(WPARAM wParam, LPARAM lParam)
 //------------------------------------------------------------------
 LRESULT CLiveUI::OnLButtonDblClk(WPARAM wParam, LPARAM lParam)
 {
+	LButtonClickEvent();
 	return DefWindowProc(g_hWnd, WM_NCLBUTTONDBLCLK, wParam, lParam);
 }

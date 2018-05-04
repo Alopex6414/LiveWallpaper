@@ -132,6 +132,15 @@
     <ClInclude Include="LiveBackGround.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LiveBackPanel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveBackIcon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveButton.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -159,6 +168,15 @@
       <Filter>PlumLibrary</Filter>
     </ClCompile>
     <ClCompile Include="LiveBackGround.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveBackPanel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveBackIcon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveButton.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

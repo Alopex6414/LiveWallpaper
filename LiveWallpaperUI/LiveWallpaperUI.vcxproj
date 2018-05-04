@@ -159,6 +159,9 @@
     <ClInclude Include="..\Lua\header\lzio.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="LiveBackGround.h" />
+    <ClInclude Include="LiveBackIcon.h" />
+    <ClInclude Include="LiveBackPanel.h" />
+    <ClInclude Include="LiveButton.h" />
     <ClInclude Include="LiveLua.h" />
     <ClInclude Include="LiveUI.h" />
     <ClInclude Include="LiveUIProcess.h" />
@@ -171,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LiveBackGround.cpp" />
+    <ClCompile Include="LiveBackIcon.cpp" />
+    <ClCompile Include="LiveBackPanel.cpp" />
+    <ClCompile Include="LiveButton.cpp" />
     <ClCompile Include="LiveLua.cpp" />
     <ClCompile Include="LiveUI.cpp" />
     <ClCompile Include="LiveUIProcess.cpp" />

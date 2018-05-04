@@ -17,6 +17,8 @@
 //Include Common Header File
 #include "Common.h"
 #include "LiveBackGround.h"
+#include "LiveBackPanel.h"
+#include "LiveBackIcon.h"
 
 //Include PlumLibrary Header File
 #include "PlumLog.h"
@@ -35,6 +37,10 @@ private:
 	bool m_bWindowClosed;			//窗口关闭状态
 	bool m_bWindowClosing;			//窗口正在关闭状态
 
+	//<<<Window Frame
+	int m_nFrame;					//刷新帧数
+	bool m_bFrame;					//帧数标志
+
 	//<<<Mouse Point
 	bool m_bMouseTrack;				//鼠标离开客户区标志
 	POINT m_sMousePoint;			//鼠标坐标值
@@ -47,6 +53,7 @@ private:
 
 private:
 	void ShowWindowAlpha(bool& bState, int& nAlpha);
+	void LButtonClickEvent();		//鼠标左键按下响应
 
 public:
 	CLiveUI();
@@ -61,10 +68,20 @@ public:
 	void ReleaseWindowExtra();		//释放回收窗口资源
 
 	//<<<重绘窗口
+	void UpdateWindow();			//刷新窗口
 	void RePaintWindow();			//重绘窗口
 
 protected:
 	CLiveBackGround m_cLiveBackGround;		//窗口背景
+	CLiveBackPanel m_cLiveBackPanel;		//容器背景
+
+	CLiveBackIcon m_cLiveBackIconHome;		//图标--主页
+	CLiveBackIcon m_cLiveBackIconPhone;		//图标--电话
+	CLiveBackIcon m_cLiveBackIconConfig;	//图标--设置
+	CLiveBackIcon m_cLiveBackIconCard;		//图标--卡片
+	CLiveBackIcon m_cLiveBackIconWallpaper;	//图标--壁纸
+	CLiveBackIcon m_cLiveBackIconColor;		//图标--彩色
+	CLiveBackIcon m_cLiveBackIconChange;	//图标--改变
 
 public:
 	LRESULT OnTimer(WPARAM wParam, LPARAM lParam);	//定时消息响应
