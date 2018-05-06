@@ -37,6 +37,9 @@ extern bool g_bMonitorFlag;
 extern volatile bool g_bDecodeFlag;
 extern CRITICAL_SECTION g_csDecode;
 
+extern volatile bool g_bWaitFlag;
+extern CRITICAL_SECTION g_csWait;
+
 extern unsigned char* g_pArrayY;
 extern unsigned char* g_pArrayU;
 extern unsigned char* g_pArrayV;

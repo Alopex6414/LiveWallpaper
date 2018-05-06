@@ -954,6 +954,12 @@
     <ClInclude Include="DirectTexture.h">
       <Filter>DirectLibrary</Filter>
     </ClInclude>
+    <ClInclude Include="DirectGraphics2D.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectSprite.h">
+      <Filter>DirectLibrary</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="LiveWallpaperCore.rc">
@@ -1037,6 +1043,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="DirectTexture.cpp">
+      <Filter>DirectLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectGraphics2D.cpp">
+      <Filter>DirectLibrary</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectSprite.cpp">
       <Filter>DirectLibrary</Filter>
     </ClCompile>
   </ItemGroup>

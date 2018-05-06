@@ -57,6 +57,9 @@ bool g_bMonitorFlag = false;
 volatile bool g_bDecodeFlag = false;
 CRITICAL_SECTION g_csDecode;				// CriticalSection临界区
 
+volatile bool g_bWaitFlag = false;
+CRITICAL_SECTION g_csWait;					// CriticalSection临界区
+
 int g_nDeskTopWidth = 0;
 int g_nDeskTopHeight = 0;
 
@@ -104,18 +107,8 @@ BOOL LiveWallpaperInit()
 		}
 	}
 
-	// 启用等待线程
-	g_pPlumWait = new CPlumThread(&g_cLiveCoreWait);
-	g_pPlumWait->PlumThreadInit();
-	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Start Wait Thread.\n");
-
-	g_pPlumWait->PlumThreadJoin();	// 等待进程执行
-	if (g_pPlumWait)
-	{
-		g_pPlumWait->PlumThreadExit();
-		SAFE_DELETE(g_pPlumWait);
-		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Wait Thread Exit.\n");
-	}
+	// 初始化等待线程临界区
+	InitializeCriticalSection(&g_csWait);
 
 	// 是否启用默认视频
 	if (g_nLiveCoreVideoMode == 0)
@@ -130,6 +123,14 @@ BOOL LiveWallpaperInit()
 		memcpy_s(g_chDefaultVideoAddress, MAX_PATH, g_chDefaultVideoDirector, MAX_PATH);
 		strcat_s(g_chDefaultVideoAddress, g_chLiveCoreVideoName);
 
+		g_bWaitFlag = true;	// 等待标识...
+
+		// 开启等待线程
+		g_pPlumWait = new CPlumThread(&g_cLiveCoreWait);
+		g_pPlumWait->PlumThreadInit();
+		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Start Wait Thread.\n");
+
+		// 开启解包线程
 		g_pPlumUnpack = new CPlumThread(&g_cLiveCoreUnpack);
 		g_pPlumUnpack->PlumThreadInit();
 		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Start Unpack Thread.\n");
@@ -144,6 +145,18 @@ BOOL LiveWallpaperInit()
 
 		ZeroMemory(g_chLiveCoreVideoAddress, MAX_PATH);
 		memcpy_s(g_chLiveCoreVideoAddress, MAX_PATH, g_chDefaultVideoUnpack, MAX_PATH);
+
+		EnterCriticalSection(&g_csWait);
+		g_bWaitFlag = false;
+		LeaveCriticalSection(&g_csWait);
+
+		g_pPlumWait->PlumThreadJoin();	// 等待进程执行
+		if (g_pPlumWait)
+		{
+			g_pPlumWait->PlumThreadExit();
+			SAFE_DELETE(g_pPlumWait);
+			g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Wait Thread Exit.\n");
+		}
 	}
 
 	// 开启监视线程
@@ -254,6 +267,7 @@ BOOL LiveWallpaperInit()
 void LiveWallpaperRelease()
 {
 	// 删除临界区
+	DeleteCriticalSection(&g_csWait);
 	DeleteCriticalSection(&g_csDecode);
 
 	SAFE_DELETE_ARRAY(g_pArrayY);

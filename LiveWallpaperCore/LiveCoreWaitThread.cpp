@@ -45,9 +45,26 @@ void WINAPI CLiveCoreWaitThread::PlumThreadRun()
 {
 	m_cLiveCoreWait.LiveCoreWaitInit();
 
-	//while (true)	//这里需要添加推出等待的条件...
-	//{
+	while (true)	//这里需要添加推出等待的条件...
+	{
 		m_cLiveCoreWait.LiveCoreWaitUpdate();
 		m_cLiveCoreWait.LiveCoreWaitRender();
-	//}
+
+		if (m_cLiveCoreWait.m_bUnpackStop)
+		{
+			if (m_cLiveCoreWait.m_bSakuraStop)
+			{
+				break;
+			}
+		}
+		
+		EnterCriticalSection(&g_csWait);
+		if (!g_bWaitFlag)
+		{
+			m_cLiveCoreWait.m_bUnpackStop = true;
+			//LeaveCriticalSection(&g_csWait);
+			//break;
+		}
+		LeaveCriticalSection(&g_csWait);
+	}
 }
