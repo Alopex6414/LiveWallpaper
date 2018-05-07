@@ -141,6 +141,12 @@
     <ClInclude Include="LiveButton.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LiveTabConfig.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveTab.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -177,6 +183,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LiveButton.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveTabConfig.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveTab.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

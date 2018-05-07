@@ -163,6 +163,8 @@
     <ClInclude Include="LiveBackPanel.h" />
     <ClInclude Include="LiveButton.h" />
     <ClInclude Include="LiveLua.h" />
+    <ClInclude Include="LiveTab.h" />
+    <ClInclude Include="LiveTabConfig.h" />
     <ClInclude Include="LiveUI.h" />
     <ClInclude Include="LiveUIProcess.h" />
     <ClInclude Include="PlumConsole.h" />
@@ -178,6 +180,8 @@
     <ClCompile Include="LiveBackPanel.cpp" />
     <ClCompile Include="LiveButton.cpp" />
     <ClCompile Include="LiveLua.cpp" />
+    <ClCompile Include="LiveTab.cpp" />
+    <ClCompile Include="LiveTabConfig.cpp" />
     <ClCompile Include="LiveUI.cpp" />
     <ClCompile Include="LiveUIProcess.cpp" />
     <ClCompile Include="PlumConsole.cpp" />
