@@ -23,6 +23,7 @@ HWND g_hWnd;					//窗口句柄
 HINSTANCE g_hInstance;			//窗口实例句柄
 
 HMENU g_hMenu;					//窗口菜单句柄
+bool g_bActive = true;			//窗口当前是否激活
 
 //------------------------------------------------------------------
 // @Function:	 MyRegisterClass(HINSTANCE hInstance)
@@ -162,6 +163,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_TIMER:
 		break;
+	case WM_ACTIVATEAPP:
+		if (wParam == TRUE && g_bActive == false)
+		{
+			g_bActive = true;
+		}
+		else if (wParam == FALSE && g_bActive == true)
+		{
+			g_bActive = false;
+		}
+		break;
 	case WM_USER:
 		if (lParam == WM_RBUTTONDOWN)
 		{
@@ -213,6 +224,9 @@ HRESULT InitWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLin
 	MyRegisterClass(hInstance, lpWndPara);//注册窗口类
 	bState = InitWndInstance(hInstance, nCmdShow, lpWndPara, pCallBackInitWndExtra);//初始化窗口实例句柄
 	if (!bState) return E_FAIL;//FAIL
+
+	bState = SetProcessDPIAware();
+	if (!bState) return E_FAIL;
 
 	return S_OK;//OK
 }

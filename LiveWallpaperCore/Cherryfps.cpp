@@ -54,6 +54,18 @@ CCherryfps::CCherryfps(IDirect3DDevice9* pD3D9Device)
 }
 
 //------------------------------------------------------------------
+// @Function:	 CCherryfps(void) const
+// @Purpose: CCherryfps获取当前fps
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+float CCherryfps::CherryfpsGetTime(void) const
+{
+	return m_fps;
+}
+
+//------------------------------------------------------------------
 // @Function:	 CherryfpsInit(int nFontSize, LPWSTR lpszFontType)
 // @Purpose: CCherryfps获取帧速率fps
 // @Since: v1.00a

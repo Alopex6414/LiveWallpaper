@@ -109,7 +109,7 @@ void AnalyzeConfigFile()
 // @Para: const char* pVideoPath	// 视频路径地址
 // @Return: BOOL
 //----------------------------------------------------------------------------------------------
-BOOL AnalyzeVideoInfo(HWND hWnd, const char* pVideoPath, int* pWidth, int* pHeight)
+BOOL AnalyzeVideoInfo(HWND hWnd, const char* pVideoPath, int* pWidth, int* pHeight, int* pFreq)
 {
 	AVFormatContext *pFormatCtx;
 	AVCodecContext  *pCodecCtx;
@@ -168,6 +168,7 @@ BOOL AnalyzeVideoInfo(HWND hWnd, const char* pVideoPath, int* pWidth, int* pHeig
 
 	*pWidth = pCodecCtx->width;
 	*pHeight = pCodecCtx->height;
+	*pFreq = pCodecCtx->framerate.num;
 
 	avcodec_close(pCodecCtx);
 	avformat_free_context(pFormatCtx);
@@ -376,4 +377,41 @@ void LiveCoreSetChildWindow(HWND hChildWindow)
 
 	hSysListView32 = FindWindowEx(hShellDefView, NULL, L"SysListView32", L"FolderView");
 	SetParent(hChildWindow, hDeskTop);
+}
+
+//------------------------------------------------------------------
+// @Function:	 LiveCoreControlVideoFreq()
+// @Purpose: LiveCore控制频率
+// @Since: v1.00a
+// @Para: float fExcept
+// @Para: float fCurrent
+// @Return: NULL
+//------------------------------------------------------------------
+void LiveCoreControlVideoFreq(float fExcept, float fCurrent)
+{
+	static float fLastDelta = 0.0f;
+	float fDelta = 0.0f;
+	float fOutput = 0.0f;
+	int nOutput = 0;
+
+	float fP = 0.5f;
+	float fI = 0.0f;
+	float fD = 0.0f;
+
+	fDelta = fCurrent - fExcept;
+	fOutput = fP * fDelta + fD * (fDelta - fLastDelta);
+	fLastDelta = fDelta;
+
+	if (fOutput < 0.0f)
+	{
+		fOutput = 0.0f;
+	}
+
+	if (fOutput > 50.0f)
+	{
+		fOutput = 50.0f;
+	}
+
+	nOutput = (int)fOutput;
+	Sleep(nOutput);
 }

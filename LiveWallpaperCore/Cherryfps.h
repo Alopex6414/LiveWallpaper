@@ -38,6 +38,9 @@ public:
 
 	CCherryfps(IDirect3DDevice9* pD3D9Device);						//Cherryfps (~构造函数)
 
+	//访问
+	float CherryfpsGetTime(void) const;
+
 	//初始化
 	void CherryfpsInit(int nFontSize, LPWSTR lpszFontType);			//Cherryfps (~初始化)
 

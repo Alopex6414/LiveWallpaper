@@ -66,6 +66,8 @@ int g_nDeskTopHeight = 0;
 int g_nVideoWidth = 0;
 int g_nVideoHeight = 0;
 
+int g_nVideoFreq = 0;						// Video freq
+
 char g_chDefaultVideoAddress[MAX_PATH] = { 0 };
 char g_chDefaultVideoDirector[MAX_PATH] = { 0 };
 char g_chDefaultVideoUnpack[MAX_PATH] = { 0 };
@@ -211,13 +213,18 @@ BOOL LiveWallpaperInit()
 	g_pD3D9Device = g_pMainGraphics->DirectGraphicsGetDevice();	// 获取D3D9绘制设备
 
 	// 分析视频信息
-	if (!AnalyzeVideoInfo(g_hWnd, g_chLiveCoreVideoAddress, &g_nVideoWidth, &g_nVideoHeight))
+	if (!AnalyzeVideoInfo(g_hWnd, g_chLiveCoreVideoAddress, &g_nVideoWidth, &g_nVideoHeight, &g_nVideoFreq))
 	{
 		g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Fail Analyze Video Infomation.\n");
 		return FALSE;
 	}
 	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Analyze Video Infomation.\n");
-	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Para:VideoWidth=%d, Para:VideoHeight=%d.\n", g_nVideoWidth, g_nVideoHeight);
+	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Para:VideoWidth=%d, Para:VideoHeight=%d, Para:VideoFreq=%d.\n", g_nVideoWidth, g_nVideoHeight, g_nVideoFreq);
+
+	if (g_nVideoFreq == 0)
+	{
+		g_nVideoFreq = 60;	// fps!=0
+	}
 
 	// 初始化Direct3DSurface
 	hr = g_pD3D9Device->CreateOffscreenPlainSurface(g_nVideoWidth, g_nVideoHeight, (D3DFORMAT)MAKEFOURCC('Y', 'V', '1', '2'), D3DPOOL_DEFAULT, &g_pD3D9Surface, NULL);
@@ -318,6 +325,11 @@ void LiveWallpaperUpdate()
 	if (g_bDecodeFlag)
 	{
 		HRESULT hr;
+
+		if (!g_bActive)
+		{
+			Sleep(50);
+		}
 
 		EnterCriticalSection(&g_csDecode);
 		hr = g_pMainGraphics->DirectGraphicsTestCooperativeLevel();
@@ -491,5 +503,6 @@ void LiveWallpaperRender()
 			g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Direct3D Render One frame.\n");
 		}
 		LeaveCriticalSection(&g_csDecode);
+
 	}
 }

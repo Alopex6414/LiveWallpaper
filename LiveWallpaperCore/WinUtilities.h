@@ -58,6 +58,8 @@ typedef void		(CALLBACK*LPCALLBACKDIRECT3DRENDERFUNC)(void);//Direct3D Render
 extern HWND g_hWnd;
 extern HINSTANCE g_hInstance;
 
+extern bool g_bActive;
+
 //Function Definition
 extern ATOM MyRegisterClass(HINSTANCE hInstance, WndPara* lpsWndPara);//Register Window Class
 extern BOOL InitWndInstance(HINSTANCE hInstance, int nCmdShow, WndPara* lpsWndPara, LPCALLBACKINITWNDEXTRAFUNC pCallBackInitWndExtra);//Initialization Window Instance
