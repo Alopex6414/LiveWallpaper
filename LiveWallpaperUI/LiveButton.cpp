@@ -218,3 +218,20 @@ VOID CLiveButton::LiveButtonPaint(HDC& hDC)
 {
 	m_iMage.Draw(hDC, m_nPosX, m_nPosY, m_nWidth, m_nHeight);
 }
+
+//------------------------------------------------------------------
+// @Function:	 LiveButtonPaint()
+// @Purpose: CLiveButton÷ÿªÊ
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+VOID CLiveButton::LiveButtonPaint(HDC& hDC, int nAlpha)
+{
+	BLENDFUNCTION bf;
+	bf.BlendOp = AC_SRC_OVER;
+	bf.BlendFlags = 0;
+	bf.AlphaFormat = AC_SRC_ALPHA;
+	bf.SourceConstantAlpha = nAlpha;
+	AlphaBlend(hDC, m_nPosX, m_nPosY, m_nWidth, m_nHeight, m_iMage.GetDC(), 0, 0, m_nWidth, m_nHeight, bf);
+}

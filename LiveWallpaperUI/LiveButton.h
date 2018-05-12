@@ -46,6 +46,7 @@ public:
 
 	BOOL LiveButtonInit(LPCSTR szFile);
 	VOID LiveButtonPaint(HDC& hDC);
+	VOID LiveButtonPaint(HDC& hDC, int nAlpha);
 };
 
 #endif // !__LIVEBUTTON_H_

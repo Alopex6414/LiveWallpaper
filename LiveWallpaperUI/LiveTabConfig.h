@@ -16,16 +16,21 @@
 
 //Include Common Header File
 #include "Common.h"
+#include "LiveTab.h"
+#include "LiveButton.h"
 
 //Class Definition
-class CLiveTabConfig
+class CLiveTabConfig :public CLiveTab
 {
-private:
-
+protected:
+	CLiveButton m_cLabelTitle;
 
 public:
 	CLiveTabConfig();
 	~CLiveTabConfig();
+
+	VOID LiveTabConfigInit(void);
+	VOID LiveTabConfigPaint(HDC& hDC);
 
 };
 

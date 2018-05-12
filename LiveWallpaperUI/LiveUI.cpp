@@ -137,6 +137,9 @@ BOOL CLiveUI::InitWindowExtra()
 
 	m_cLiveBackIconHome.LiveBackIconSetClick(true);
 
+	//设置各个Tab
+	m_cLiveTabConfig.LiveTabConfigInit();
+
 	//初始化Lua
 	m_pLiveLua = new CLiveLua("script\\LiveUI.lua");
 	bRet = m_pLiveLua->LiveLuaInit();
@@ -278,6 +281,9 @@ void CLiveUI::RePaintWindow()
 	//绘制窗口背景
 	m_cLiveBackGround.LiveBackGroundPaint(hMemDC);
 
+	//绘制页面背景
+	m_cLiveTabConfig.LiveTabConfigPaint(hMemDC);
+
 	//绘制容器背景
 	m_cLiveBackPanel.LiveBackPanelPaint(hMemDC);
 
@@ -297,11 +303,11 @@ void CLiveUI::RePaintWindow()
 
 	memset(chArr, 0, MAX_PATH);
 	sprintf_s(chArr, "X:%d", m_sMousePoint.x);
-	TextOutA(hMemDC, 0, 0, chArr, strlen(chArr));
+	//TextOutA(hMemDC, 0, 0, chArr, strlen(chArr));
 
 	memset(chArr, 0, MAX_PATH);
 	sprintf_s(chArr, "Y:%d", m_sMousePoint.y);
-	TextOutA(hMemDC, 0, 14, chArr, strlen(chArr));
+	//TextOutA(hMemDC, 0, 14, chArr, strlen(chArr));
 
 	//内存DC拷贝到窗口DC
 	BitBlt(hDC, 0, 0, USER_SCREENWIDTH, USER_SCREENHEIGHT, hMemDC, 0, 0, SRCCOPY);
@@ -369,6 +375,8 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
 		m_cLiveBackIconColor.LiveBackIconSetClick(false);
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+
+		m_cLiveTabConfig.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--电话按下
@@ -381,6 +389,8 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
 		m_cLiveBackIconColor.LiveBackIconSetClick(false);
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+
+		m_cLiveTabConfig.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--设置按下
@@ -393,6 +403,8 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
 		m_cLiveBackIconColor.LiveBackIconSetClick(false);
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+
+		m_cLiveTabConfig.LiveTabSetShowState(true);
 	}
 
 	//<<<检测--卡片按下
@@ -405,6 +417,8 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
 		m_cLiveBackIconColor.LiveBackIconSetClick(false);
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+
+		m_cLiveTabConfig.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--壁纸按下
@@ -417,6 +431,8 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconWallpaper.LiveBackIconSetClick(true);
 		m_cLiveBackIconColor.LiveBackIconSetClick(false);
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+
+		m_cLiveTabConfig.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--彩色按下
@@ -429,6 +445,8 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
 		m_cLiveBackIconColor.LiveBackIconSetClick(true);
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
+
+		m_cLiveTabConfig.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--变换按下
@@ -441,6 +459,8 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconWallpaper.LiveBackIconSetClick(false);
 		m_cLiveBackIconColor.LiveBackIconSetClick(false);
 		m_cLiveBackIconChange.LiveBackIconSetClick(true);
+
+		m_cLiveTabConfig.LiveTabSetShowState(false);
 	}
 
 	//<<<...

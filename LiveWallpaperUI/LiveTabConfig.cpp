@@ -34,3 +34,36 @@ CLiveTabConfig::CLiveTabConfig()
 CLiveTabConfig::~CLiveTabConfig()
 {
 }
+
+//------------------------------------------------------------------
+// @Function:	 LiveTabConfigInit()
+// @Purpose: CLiveTabConfig≥ı ºªØTab“≥
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+VOID CLiveTabConfig::LiveTabConfigInit(void)
+{
+	LiveTab_SetWindow(640, 480);
+	LiveTabInit("frame\\Bk\\Config.png");
+
+	m_cLabelTitle.LiveButton_SetWindow(0, 0, 120, 40);
+	m_cLabelTitle.LiveButtonInit("frame\\Label\\Config.png");
+
+	LiveTabSetShowState(false);
+}
+
+//------------------------------------------------------------------
+// @Function:	 LiveTabConfig()
+// @Purpose: CLiveTabConfig÷ÿªÊTab“≥
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+VOID CLiveTabConfig::LiveTabConfigPaint(HDC& hDC)
+{
+	LiveTabPaint(hDC);
+
+	m_cLabelTitle.LiveButtonPaint(hDC, m_nAlpha);
+	
+}

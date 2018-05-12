@@ -19,6 +19,7 @@
 #include "LiveBackGround.h"
 #include "LiveBackPanel.h"
 #include "LiveBackIcon.h"
+#include "LiveTabConfig.h"
 
 //Include PlumLibrary Header File
 #include "PlumLog.h"
@@ -82,6 +83,8 @@ protected:
 	CLiveBackIcon m_cLiveBackIconWallpaper;	//图标--壁纸
 	CLiveBackIcon m_cLiveBackIconColor;		//图标--彩色
 	CLiveBackIcon m_cLiveBackIconChange;	//图标--改变
+
+	CLiveTabConfig m_cLiveTabConfig;		//Tab--设置
 
 public:
 	LRESULT OnTimer(WPARAM wParam, LPARAM lParam);	//定时消息响应
