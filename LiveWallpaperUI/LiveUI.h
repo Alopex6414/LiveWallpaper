@@ -64,6 +64,9 @@ public:
 	void ConstructExtra();			//构造窗口资源
 	void DestructExtra();			//析构窗口资源
 
+	//<<<(访问/控制)
+	POINT GetMosePoint() const;		//获取鼠标坐标
+
 	//<<<(初始化/释放)
 	BOOL InitWindowExtra();			//初始化窗口资源
 	void ReleaseWindowExtra();		//释放回收窗口资源

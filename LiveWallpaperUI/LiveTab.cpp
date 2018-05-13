@@ -24,6 +24,7 @@ CLiveTab::CLiveTab()
 {
 	m_nScreenWidth = 0;
 	m_nScreenHeight = 0;
+	m_bLoadWindow = false;
 	m_bShowWindow = false;
 	m_nAlpha = 0;
 	memset(m_tcFilePath, 0, MAX_PATH * sizeof(TCHAR));
@@ -182,6 +183,7 @@ VOID CLiveTab::LiveTabPaint(HDC& hDC)
 		if (m_nAlpha > 255)
 		{
 			m_nAlpha = 255;
+			m_bLoadWindow = true;
 		}
 	}
 	else
@@ -190,6 +192,7 @@ VOID CLiveTab::LiveTabPaint(HDC& hDC)
 		if (m_nAlpha < 0)
 		{
 			m_nAlpha = 0;
+			m_bLoadWindow = false;
 		}
 	}
 

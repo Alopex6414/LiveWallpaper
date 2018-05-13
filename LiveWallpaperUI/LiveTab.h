@@ -24,6 +24,7 @@ protected:
 	int m_nScreenWidth;		//<<<窗口宽度
 	int m_nScreenHeight;	//<<<窗口高度
 
+	bool m_bLoadWindow;		//<<<加载窗口标志		
 	bool m_bShowWindow;		//<<<是否显示窗口
 	int m_nAlpha;			//<<<窗口Alpha
 

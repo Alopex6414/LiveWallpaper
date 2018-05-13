@@ -87,6 +87,18 @@ void CLiveUI::DestructExtra()
 }
 
 //------------------------------------------------------------------
+// @Function:	 GetMosePoint()
+// @Purpose: CLiveUI获取鼠标坐标
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+POINT CLiveUI::GetMosePoint() const 
+{
+	return m_sMousePoint;
+}
+
+//------------------------------------------------------------------
 // @Function:	 InitWindowExtra()
 // @Purpose: CLiveUI初始化窗口资源
 // @Since: v1.00a
@@ -138,6 +150,7 @@ BOOL CLiveUI::InitWindowExtra()
 	m_cLiveBackIconHome.LiveBackIconSetClick(true);
 
 	//设置各个Tab
+	m_cLiveTabConfig.LiveTabConfigSetMouse(&m_sMousePoint);
 	m_cLiveTabConfig.LiveTabConfigInit();
 
 	//初始化Lua
@@ -464,6 +477,134 @@ void CLiveUI::LButtonClickEvent()
 	}
 
 	//<<<...
+	
+	//===============================
+	// 设置页面
+	//===============================
+	if (m_cLiveTabConfig.LiveTabGetShowState())
+	{
+		//---------------视频模式------------------
+		// 选中默认模式
+		if (m_cLiveTabConfig.m_cRadioLiveModeDefault.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveModeDefault.LiveRadioSetSelectState(true);
+			m_cLiveTabConfig.m_cRadioLiveModeSelect.LiveRadioSetSelectState(false);
+		}
+		
+		// 选中选择模式
+		if (m_cLiveTabConfig.m_cRadioLiveModeSelect.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveModeDefault.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveModeSelect.LiveRadioSetSelectState(true);
+		}
+
+		//---------------音频模式------------------
+		// 选中启用音频
+		if (m_cLiveTabConfig.m_cRadioLiveAudioUse.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveAudioUse.LiveRadioSetSelectState(true);
+			m_cLiveTabConfig.m_cRadioLiveAudioNoUse.LiveRadioSetSelectState(false);
+		}
+
+		// 选中禁用音频
+		if (m_cLiveTabConfig.m_cRadioLiveAudioNoUse.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveAudioUse.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveAudioNoUse.LiveRadioSetSelectState(true);
+		}
+
+		//--------------其他设置------------------
+		// 选中启用显示显卡FPS
+		if (m_cLiveTabConfig.m_cRadioLiveFPS.LiveRadioIsHover(m_sMousePoint))
+		{
+			if (m_cLiveTabConfig.m_cRadioLiveFPS.LiveRadioGetSelectState())
+			{
+				m_cLiveTabConfig.m_cRadioLiveFPS.LiveRadioSetSelectState(false);
+			}
+			else
+			{
+				m_cLiveTabConfig.m_cRadioLiveFPS.LiveRadioSetSelectState(true);
+			}
+		}
+
+		// 选中启用详细日志
+		if (m_cLiveTabConfig.m_cRadioLiveLog.LiveRadioIsHover(m_sMousePoint))
+		{
+			if (m_cLiveTabConfig.m_cRadioLiveLog.LiveRadioGetSelectState())
+			{
+				m_cLiveTabConfig.m_cRadioLiveLog.LiveRadioSetSelectState(false);
+			}
+			else
+			{
+				m_cLiveTabConfig.m_cRadioLiveLog.LiveRadioSetSelectState(true);
+			}
+		}
+
+		//--------------显示模式-----------------
+		// 选中填充模式
+		if (m_cLiveTabConfig.m_cRadioLiveShowOne.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveShowOne.LiveRadioSetSelectState(true);
+			m_cLiveTabConfig.m_cRadioLiveShowTwo.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowThree.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFour.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFive.LiveRadioSetSelectState(false);
+		}
+
+		// 选中适应模式
+		if (m_cLiveTabConfig.m_cRadioLiveShowTwo.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveShowOne.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowTwo.LiveRadioSetSelectState(true);
+			m_cLiveTabConfig.m_cRadioLiveShowThree.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFour.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFive.LiveRadioSetSelectState(false);
+		}
+
+		// 选中拉伸模式
+		if (m_cLiveTabConfig.m_cRadioLiveShowThree.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveShowOne.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowTwo.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowThree.LiveRadioSetSelectState(true);
+			m_cLiveTabConfig.m_cRadioLiveShowFour.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFive.LiveRadioSetSelectState(false);
+		}
+
+		// 选中平铺模式
+		if (m_cLiveTabConfig.m_cRadioLiveShowFour.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveShowOne.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowTwo.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowThree.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFour.LiveRadioSetSelectState(true);
+			m_cLiveTabConfig.m_cRadioLiveShowFive.LiveRadioSetSelectState(false);
+		}
+
+		// 选中居中模式
+		if (m_cLiveTabConfig.m_cRadioLiveShowFive.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.m_cRadioLiveShowOne.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowTwo.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowThree.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFour.LiveRadioSetSelectState(false);
+			m_cLiveTabConfig.m_cRadioLiveShowFive.LiveRadioSetSelectState(true);
+		}
+
+		// 默认视频选择
+		if (m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrlIsLeftHover(m_sMousePoint))		// 左键
+		{
+			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetLeftClick(true);
+			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetRightClick(false);
+		}
+
+		if (m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrlIsRightHover(m_sMousePoint))	// 右键
+		{
+			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetLeftClick(false);
+			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetRightClick(true);
+		}
+
+	}
 
 }
 
