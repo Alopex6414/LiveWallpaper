@@ -44,6 +44,9 @@ protected:
 	CImage m_iMageText;						//<<<图片(Text)
 
 public:
+	int m_nWallpaperCount;					//<<<默认壁纸类型(0)
+
+public:
 	CLiveRollCtrl();		//构造
 	~CLiveRollCtrl();		//析构
 
@@ -54,6 +57,9 @@ public:
 	bool LiveRollCtrl_GetLeftClick(void) { return m_bSelectLeft; }
 	void LiveRollCtrl_SetRightClick(bool bClick) { m_bSelectRight = bClick; }
 	bool LiveRollCtrl_GetRightClick(void) { return m_bSelectRight; }
+
+	void LiveRollCtrl_SetMoveX(int nMoveX) { m_nMoveX = nMoveX; }
+	int LiveRollCtrl_GetMoveX(void) { return m_nMoveX; }
 
 	bool LiveRollCtrlIsLeftHover(POINT pt);
 	bool LiveRollCtrlIsRightHover(POINT pt);

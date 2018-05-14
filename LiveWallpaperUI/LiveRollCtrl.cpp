@@ -30,6 +30,8 @@ CLiveRollCtrl::CLiveRollCtrl()
 	m_nMoveX = 0;
 	m_nMoveY = 0;
 
+	m_nWallpaperCount = 0;
+
 	m_bSelectLeft = false;
 	m_nLeftAlpha = 128;
 	m_bSelectRight = false;

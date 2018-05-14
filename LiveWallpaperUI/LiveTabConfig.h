@@ -27,6 +27,16 @@ class CLiveTabConfig :public CLiveTab
 private:
 	POINT* m_pMousePoint;
 
+private:
+	int m_nLiveCoreVideoMode;			// LiveCore动态壁纸视频模式: 0~启用默认视频 1~启用选择视频
+	int m_nLiveCoreWallpaperMode;		// LiveCore屏幕分辨率模式: 0~填充 1~适应 2~拉伸 3~平铺 4~居中
+	int m_nLiveCoreShowGraphics;		// LiveCore显示: 0~不显示显卡型号(fps) 1~显示显卡型号(fps)
+	int m_nLiveCoreLogProcess;			// LiveCore日志记录: 0~不记录过程 1~记录过程
+	int m_nLiveCoreWallpaperAudioMode;	// LiveCore音频播放模式: 0~不播放音频 1~播放音频
+
+	char m_chLiveCoreVideoName[MAX_PATH];		// LiveCore动态壁纸默认视频名称
+	char m_chLiveCoreVideoAddress[MAX_PATH];	// LiveCore动态壁纸视频地址
+
 public:
 	CLiveButton m_cLabelTitle;
 	CLiveButton m_cLabelLiveMode;
@@ -61,11 +71,21 @@ public:
 	CLiveRadio m_cRadioLiveFPS;
 	CLiveRadio m_cRadioLiveLog;
 
+	CLiveRadio m_cRadioLiveRepeat;
+	CLiveRadio m_cRadioLiveSave;
+
+public:
+	VOID LiveTabConfigRepeatButtonClick();	// 单击恢复默认设置按钮事件
+	VOID LiveTabConfigSaveButtonClick();	// 单击保存当前设置按钮事件
+
 public:
 	CLiveTabConfig();
 	~CLiveTabConfig();
 
 	VOID LiveTabConfigSetMouse(POINT* ppt);
+
+	VOID LiveTabConfigReadConfig();
+	VOID LiveTabConfigWriteConfig();
 
 	VOID LiveTabConfigInit(void);
 	VOID LiveTabConfigPaint(HDC& hDC);

@@ -596,12 +596,36 @@ void CLiveUI::LButtonClickEvent()
 		{
 			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetLeftClick(true);
 			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetRightClick(false);
+
+			m_cLiveTabConfig.m_cRollCtrlDefault.m_nWallpaperCount--;
+			if (m_cLiveTabConfig.m_cRollCtrlDefault.m_nWallpaperCount < 0)
+			{
+				m_cLiveTabConfig.m_cRollCtrlDefault.m_nWallpaperCount = 0;
+			}
 		}
 
 		if (m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrlIsRightHover(m_sMousePoint))	// ÓÒ¼ü
 		{
 			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetLeftClick(false);
 			m_cLiveTabConfig.m_cRollCtrlDefault.LiveRollCtrl_SetRightClick(true);
+
+			m_cLiveTabConfig.m_cRollCtrlDefault.m_nWallpaperCount++;
+			if (m_cLiveTabConfig.m_cRollCtrlDefault.m_nWallpaperCount > 2)
+			{
+				m_cLiveTabConfig.m_cRollCtrlDefault.m_nWallpaperCount = 2;
+			}
+		}
+
+		//<<<»Ö¸´Ä¬ÈÏÉèÖÃ°´Å¥
+		if (m_cLiveTabConfig.m_cRadioLiveRepeat.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.LiveTabConfigRepeatButtonClick();
+		}
+
+		//<<<±£´æÉèÖÃ°´Å¥
+		if (m_cLiveTabConfig.m_cRadioLiveSave.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.LiveTabConfigSaveButtonClick();
 		}
 
 	}
