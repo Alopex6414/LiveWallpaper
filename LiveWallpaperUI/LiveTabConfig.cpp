@@ -30,6 +30,7 @@ CLiveTabConfig::CLiveTabConfig()
 
 	memset(m_chLiveCoreVideoName, 0, MAX_PATH);
 	memset(m_chLiveCoreVideoAddress, 0, MAX_PATH);
+	memset(m_chVideoAddressName, 0, MAX_PATH);
 }
 
 //------------------------------------------------------------------
@@ -53,6 +54,30 @@ CLiveTabConfig::~CLiveTabConfig()
 VOID CLiveTabConfig::LiveTabConfigSetMouse(POINT* ppt)
 {
 	m_pMousePoint = ppt;
+}
+
+//------------------------------------------------------------------
+// @Function:	 LiveTabConfigAnalizeVideoAddress()
+// @Purpose: CLiveTabConfig分析视频地址名称
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+VOID CLiveTabConfig::LiveTabConfigAnalizeVideoAddress(const char* szAddress)
+{
+	char* pArray = NULL;
+	char* pTemp = NULL;
+
+	memset(m_chVideoAddressName, 0, MAX_PATH);
+
+	pArray = (char*)szAddress;
+	pTemp = strrchr(pArray, '\\');
+	if (pTemp)
+	{
+		pTemp++;
+		memcpy_s(m_chVideoAddressName, MAX_PATH, pTemp, strlen(pTemp));
+	}
+
 }
 
 //------------------------------------------------------------------
@@ -103,6 +128,13 @@ VOID CLiveTabConfig::LiveTabConfigRepeatButtonClick()
 
 	// 写入配置文件
 	LiveTabConfigWriteConfig();
+
+	// 提示
+	if (!m_cTipLiveRepeat.LiveTip_GetShowFlag())
+	{
+		m_cTipLiveRepeat.LiveTip_SetShowFlag(true);
+	}
+
 
 }
 
@@ -218,6 +250,13 @@ VOID CLiveTabConfig::LiveTabConfigSaveButtonClick()
 	// 写入配置文件
 	LiveTabConfigWriteConfig();
 
+	// 提示
+	if (!m_cTipLiveSave.LiveTip_GetShowFlag())
+	{
+		m_cTipLiveSave.LiveTip_SetShowFlag(true);
+	}
+
+
 }
 
 //------------------------------------------------------------------
@@ -279,6 +318,8 @@ VOID CLiveTabConfig::LiveTabConfigReadConfig()
 	GetPrivateProfileStringA("LIVECOREVIDEOADDRESS", "LiveCore_Video_Address", 0, chArray, MAX_PATH, chFileArr);
 	memcpy_s(m_chLiveCoreVideoAddress, MAX_PATH, chArray, MAX_PATH);	// LiveCore动态壁纸视频地址
 
+	// 分析视频地址
+	LiveTabConfigAnalizeVideoAddress(m_chLiveCoreVideoAddress);
 
 }
 
@@ -400,6 +441,14 @@ VOID CLiveTabConfig::LiveTabConfigInit(void)
 	
 	m_cRadioLiveModeSelect.LiveRadio_SetWindow(72, 120, 16, 16);
 	m_cRadioLiveModeSelect.LiveRadioInit("frame\\Button\\RadioButtonUp.png", "frame\\Button\\RadioButtonDown.png");
+
+	m_cRadioLiveAddressOpen.LiveRadio_SetWindow(240, 120, 16, 16);
+	m_cRadioLiveAddressOpen.LiveRadioInit("frame\\Button\\TougueButton.png", "frame\\Button\\TougueButton.png");
+	m_cRadioLiveAddressOpen.LiveRadioSetSelectState(false);
+
+	m_cRollTextAddress.LiveRollText_SetWindow(270, 112, 76, 32);
+	m_cRollTextAddress.LiveRollText_SetFont("等线 Light", 16);
+	m_cRollTextAddress.LiveRollTextInit("frame\\Bk\\Config.png");
 	
 	if (m_nLiveCoreVideoMode == 0)
 	{
@@ -548,6 +597,13 @@ VOID CLiveTabConfig::LiveTabConfigInit(void)
 		m_cRollCtrlDefault.LiveRollCtrl_SetMoveX(0);
 	}
 
+	//Tip
+	m_cTipLiveRepeat.LiveTip_SetWindow(240, 225, 160, 30);
+	m_cTipLiveRepeat.LiveTipInit("frame\\Label\\LiveTipRepeat.png");
+
+	m_cTipLiveSave.LiveTip_SetWindow(240, 225, 160, 30);
+	m_cTipLiveSave.LiveTipInit("frame\\Label\\LiveTipSave.png");
+
 	LiveTabSetShowState(false);
 }
 
@@ -589,6 +645,7 @@ VOID CLiveTabConfig::LiveTabConfigPaint(HDC& hDC)
 	m_cRadioLiveModeSelect.LiveRadioPaint(hDC, *m_pMousePoint, m_bLoadWindow, m_nAlpha);
 	m_cRadioLiveAudioUse.LiveRadioPaint(hDC, *m_pMousePoint, m_bLoadWindow, m_nAlpha);
 	m_cRadioLiveAudioNoUse.LiveRadioPaint(hDC, *m_pMousePoint, m_bLoadWindow, m_nAlpha);
+	m_cRadioLiveAddressOpen.LiveRadioPaint(hDC, *m_pMousePoint, m_bLoadWindow, m_nAlpha);
 
 	m_cRadioLiveFPS.LiveRadioPaint(hDC, *m_pMousePoint, m_bLoadWindow, m_nAlpha);
 	m_cRadioLiveLog.LiveRadioPaint(hDC, *m_pMousePoint, m_bLoadWindow, m_nAlpha);
@@ -605,5 +662,10 @@ VOID CLiveTabConfig::LiveTabConfigPaint(HDC& hDC)
 	
 	//RollCtrl
 	m_cRollCtrlDefault.LiveRollCtrlPaint(hDC, *m_pMousePoint, m_bLoadWindow, m_nAlpha);
+	m_cRollTextAddress.LiveRollTextPaint(hDC, m_chVideoAddressName, m_bLoadWindow, m_nAlpha);
+
+	//Tip
+	m_cTipLiveRepeat.LiveTipPaint(hDC);
+	m_cTipLiveSave.LiveTipPaint(hDC);
 
 }

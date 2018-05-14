@@ -153,6 +153,12 @@
     <ClInclude Include="LiveRollCtrl.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LiveTip.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LiveRollText.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -201,6 +207,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LiveRollCtrl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveTip.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveRollText.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -20,6 +20,8 @@
 #include "LiveButton.h"
 #include "LiveRadio.h"
 #include "LiveRollCtrl.h"
+#include "LiveRollText.h"
+#include "LiveTip.h"
 
 //Class Definition
 class CLiveTabConfig :public CLiveTab
@@ -36,6 +38,8 @@ private:
 
 	char m_chLiveCoreVideoName[MAX_PATH];		// LiveCore动态壁纸默认视频名称
 	char m_chLiveCoreVideoAddress[MAX_PATH];	// LiveCore动态壁纸视频地址
+
+	char m_chVideoAddressName[MAX_PATH];		// 选中视频地址名称
 
 public:
 	CLiveButton m_cLabelTitle;
@@ -58,6 +62,8 @@ public:
 	CLiveRadio m_cRadioLiveModeDefault;
 	CLiveRadio m_cRadioLiveModeSelect;
 	CLiveRollCtrl m_cRollCtrlDefault;
+	CLiveRadio m_cRadioLiveAddressOpen;
+	CLiveRollText m_cRollTextAddress;
 
 	CLiveRadio m_cRadioLiveAudioUse;
 	CLiveRadio m_cRadioLiveAudioNoUse;
@@ -74,6 +80,9 @@ public:
 	CLiveRadio m_cRadioLiveRepeat;
 	CLiveRadio m_cRadioLiveSave;
 
+	CLiveTip m_cTipLiveRepeat;
+	CLiveTip m_cTipLiveSave;
+
 public:
 	VOID LiveTabConfigRepeatButtonClick();	// 单击恢复默认设置按钮事件
 	VOID LiveTabConfigSaveButtonClick();	// 单击保存当前设置按钮事件
@@ -83,6 +92,7 @@ public:
 	~CLiveTabConfig();
 
 	VOID LiveTabConfigSetMouse(POINT* ppt);
+	VOID LiveTabConfigAnalizeVideoAddress(const char* szAddress);
 
 	VOID LiveTabConfigReadConfig();
 	VOID LiveTabConfigWriteConfig();
