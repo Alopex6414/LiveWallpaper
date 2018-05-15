@@ -20,6 +20,8 @@
 CLiveUI g_cLiveUI;
 CLiveUI* g_pLiveUI;
 
+CArmeniacaExport g_cArmeniacaExport;
+
 //------------------------------------------------------------------
 // @Function:	 CLiveUI()
 // @Purpose: CLiveUI构造函数
@@ -131,20 +133,20 @@ BOOL CLiveUI::InitWindowExtra()
 	m_cLiveBackIconConfig.LiveButton_SetWindow(126, 444, 32, 32);//+20
 	m_cLiveBackIconConfig.LiveButtonInit("frame\\Button\\Config.png");
 
-	m_cLiveBackIconCard.LiveBackIconSetMove(178, 479);
-	m_cLiveBackIconCard.LiveButton_SetWindow(178, 444, 32, 32);//+20
+	m_cLiveBackIconCard.LiveBackIconSetMove(168, 479);
+	m_cLiveBackIconCard.LiveButton_SetWindow(168, 444, 32, 32);//+20
 	m_cLiveBackIconCard.LiveButtonInit("frame\\Button\\Card.png");
 
-	m_cLiveBackIconWallpaper.LiveBackIconSetMove(220, 479);
-	m_cLiveBackIconWallpaper.LiveButton_SetWindow(220, 444, 32, 32);//+20
+	m_cLiveBackIconWallpaper.LiveBackIconSetMove(210, 479);
+	m_cLiveBackIconWallpaper.LiveButton_SetWindow(210, 444, 32, 32);//+20
 	m_cLiveBackIconWallpaper.LiveButtonInit("frame\\Button\\Wallpaper.png");
 	
-	m_cLiveBackIconColor.LiveBackIconSetMove(262, 479);
-	m_cLiveBackIconColor.LiveButton_SetWindow(262, 444, 32, 32);//+20
+	m_cLiveBackIconColor.LiveBackIconSetMove(252, 479);
+	m_cLiveBackIconColor.LiveButton_SetWindow(252, 444, 32, 32);//+20
 	m_cLiveBackIconColor.LiveButtonInit("frame\\Button\\Color.png");
 
-	m_cLiveBackIconChange.LiveBackIconSetMove(304, 479);
-	m_cLiveBackIconChange.LiveButton_SetWindow(304, 444, 32, 32);//+20
+	m_cLiveBackIconChange.LiveBackIconSetMove(294, 479);
+	m_cLiveBackIconChange.LiveButton_SetWindow(294, 444, 32, 32);//+20
 	m_cLiveBackIconChange.LiveButtonInit("frame\\Button\\Change.png");
 
 	m_cLiveBackIconHome.LiveBackIconSetClick(true);
@@ -152,6 +154,22 @@ BOOL CLiveUI::InitWindowExtra()
 	//设置各个Tab
 	m_cLiveTabConfig.LiveTabConfigSetMouse(&m_sMousePoint);
 	m_cLiveTabConfig.LiveTabConfigInit();
+
+	m_cLiveTabConsole.LiveTabConsoleSetMouse(&m_sMousePoint);
+	m_cLiveTabConsole.LiveTabConsoleInit();
+
+	//初始化Armeniaca
+	bRet = g_cArmeniacaExport.ArmeniacaExportInit();
+	if (!bRet)
+	{
+		return FALSE;
+	}
+
+	bRet = g_cArmeniacaExport.ArmeniacaImportFunctionAll();
+	if (!bRet)
+	{
+		return FALSE;
+	}
 
 	//初始化Lua
 	m_pLiveLua = new CLiveLua("script\\LiveUI.lua");
@@ -296,6 +314,7 @@ void CLiveUI::RePaintWindow()
 
 	//绘制页面背景
 	m_cLiveTabConfig.LiveTabConfigPaint(hMemDC);
+	m_cLiveTabConsole.LiveTabConsolePaint(hMemDC);
 
 	//绘制容器背景
 	m_cLiveBackPanel.LiveBackPanelPaint(hMemDC);
@@ -390,6 +409,7 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
 
 		m_cLiveTabConfig.LiveTabSetShowState(false);
+		m_cLiveTabConsole.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--电话按下
@@ -404,6 +424,7 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
 
 		m_cLiveTabConfig.LiveTabSetShowState(false);
+		m_cLiveTabConsole.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--设置按下
@@ -418,6 +439,7 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
 
 		m_cLiveTabConfig.LiveTabSetShowState(true);
+		m_cLiveTabConsole.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--卡片按下
@@ -432,6 +454,7 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
 
 		m_cLiveTabConfig.LiveTabSetShowState(false);
+		m_cLiveTabConsole.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--壁纸按下
@@ -446,6 +469,7 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
 
 		m_cLiveTabConfig.LiveTabSetShowState(false);
+		m_cLiveTabConsole.LiveTabSetShowState(true);
 	}
 
 	//<<<检测--彩色按下
@@ -460,6 +484,7 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconChange.LiveBackIconSetClick(false);
 
 		m_cLiveTabConfig.LiveTabSetShowState(false);
+		m_cLiveTabConsole.LiveTabSetShowState(false);
 	}
 
 	//<<<检测--变换按下
@@ -474,6 +499,7 @@ void CLiveUI::LButtonClickEvent()
 		m_cLiveBackIconChange.LiveBackIconSetClick(true);
 
 		m_cLiveTabConfig.LiveTabSetShowState(false);
+		m_cLiveTabConsole.LiveTabSetShowState(false);
 	}
 
 	//<<<...
@@ -616,6 +642,12 @@ void CLiveUI::LButtonClickEvent()
 			}
 		}
 
+		//<<<打开视频文件按钮
+		if (m_cLiveTabConfig.m_cRadioLiveAddressOpen.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConfig.LiveTabConfigOpenFileButtonClick();
+		}
+
 		//<<<恢复默认设置按钮
 		if (m_cLiveTabConfig.m_cRadioLiveRepeat.LiveRadioIsHover(m_sMousePoint))
 		{
@@ -626,6 +658,25 @@ void CLiveUI::LButtonClickEvent()
 		if (m_cLiveTabConfig.m_cRadioLiveSave.LiveRadioIsHover(m_sMousePoint))
 		{
 			m_cLiveTabConfig.LiveTabConfigSaveButtonClick();
+		}
+
+	}
+
+	//===============================
+	// 控制台页面
+	//===============================
+	if (m_cLiveTabConsole.LiveTabGetShowState())
+	{
+		//<<<播放视频壁纸按钮
+		if (m_cLiveTabConsole.m_cRadioConsoleStart.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConsole.LiveTabConsoleStartButtonClick();
+		}
+
+		//<<<停止视频壁纸按钮
+		if (m_cLiveTabConsole.m_cRadioConsoleStop.LiveRadioIsHover(m_sMousePoint))
+		{
+			m_cLiveTabConsole.LiveTabConsoleStopButtonClick();
 		}
 
 	}

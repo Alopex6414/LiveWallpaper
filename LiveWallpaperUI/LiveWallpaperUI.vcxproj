@@ -157,6 +157,7 @@
     <ClInclude Include="..\Lua\header\lundump.h" />
     <ClInclude Include="..\Lua\header\lvm.h" />
     <ClInclude Include="..\Lua\header\lzio.h" />
+    <ClInclude Include="ArmeniacaClass.h" />
     <ClInclude Include="Common.h" />
     <ClInclude Include="LiveBackGround.h" />
     <ClInclude Include="LiveBackIcon.h" />
@@ -168,6 +169,7 @@
     <ClInclude Include="LiveRollText.h" />
     <ClInclude Include="LiveTab.h" />
     <ClInclude Include="LiveTabConfig.h" />
+    <ClInclude Include="LiveTabConsole.h" />
     <ClInclude Include="LiveTip.h" />
     <ClInclude Include="LiveUI.h" />
     <ClInclude Include="LiveUIProcess.h" />
@@ -179,6 +181,7 @@
     <ClInclude Include="WinUtilities.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ArmeniacaClass.cpp" />
     <ClCompile Include="LiveBackGround.cpp" />
     <ClCompile Include="LiveBackIcon.cpp" />
     <ClCompile Include="LiveBackPanel.cpp" />
@@ -189,6 +192,7 @@
     <ClCompile Include="LiveRollText.cpp" />
     <ClCompile Include="LiveTab.cpp" />
     <ClCompile Include="LiveTabConfig.cpp" />
+    <ClCompile Include="LiveTabConsole.cpp" />
     <ClCompile Include="LiveTip.cpp" />
     <ClCompile Include="LiveUI.cpp" />
     <ClCompile Include="LiveUIProcess.cpp" />

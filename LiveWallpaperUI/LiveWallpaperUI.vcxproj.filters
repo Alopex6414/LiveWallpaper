@@ -19,6 +19,9 @@
     <Filter Include="PlumLibrary">
       <UniqueIdentifier>{e2f376d4-e83a-404f-8686-47b2b490f0b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Armeniaca">
+      <UniqueIdentifier>{7efc63f8-7802-41b1-aa90-27d889666a89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WinMain.h">
@@ -159,6 +162,12 @@
     <ClInclude Include="LiveRollText.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LiveTabConsole.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ArmeniacaClass.h">
+      <Filter>Armeniaca</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -214,6 +223,12 @@
     </ClCompile>
     <ClCompile Include="LiveRollText.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LiveTabConsole.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ArmeniacaClass.cpp">
+      <Filter>Armeniaca</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

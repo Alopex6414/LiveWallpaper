@@ -84,6 +84,7 @@ public:
 	CLiveTip m_cTipLiveSave;
 
 public:
+	VOID LiveTabConfigOpenFileButtonClick();// 单击打开文件按钮事件
 	VOID LiveTabConfigRepeatButtonClick();	// 单击恢复默认设置按钮事件
 	VOID LiveTabConfigSaveButtonClick();	// 单击保存当前设置按钮事件
 

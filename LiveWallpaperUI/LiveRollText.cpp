@@ -223,18 +223,18 @@ VOID CLiveRollText::LiveRollTextPaint(HDC& hDC, const char* szText, bool bLoad, 
 		if (!bMove)
 		{
 			nMoveX++;
-			if (nMoveX > nMoveWidth)
+			if (nMoveX > nMoveWidth + 10)
 			{
-				nMoveX = nMoveWidth;
+				nMoveX = nMoveWidth + 10;
 				bMove = true;
 			}
 		}
 		else
 		{
 			nMoveX--;
-			if (nMoveX < 0)
+			if (nMoveX < -10)
 			{
-				nMoveX = 0;
+				nMoveX = -10;
 				bMove = false;
 			}
 		}

@@ -20,10 +20,14 @@
 #include "LiveBackPanel.h"
 #include "LiveBackIcon.h"
 #include "LiveTabConfig.h"
+#include "LiveTabConsole.h"
 
 //Include PlumLibrary Header File
 #include "PlumLog.h"
 #include "PlumConsole.h"
+
+//Include Armeniaca Library
+#include "ArmeniacaClass.h"
 
 //Include Lua Srcipt Class
 #include "LiveLua.h"
@@ -88,6 +92,7 @@ protected:
 	CLiveBackIcon m_cLiveBackIconChange;	//图标--改变
 
 	CLiveTabConfig m_cLiveTabConfig;		//Tab--设置
+	CLiveTabConsole m_cLiveTabConsole;		//Tab--控制台
 
 public:
 	LRESULT OnTimer(WPARAM wParam, LPARAM lParam);	//定时消息响应
@@ -103,6 +108,8 @@ public:
 //Variable Definition
 extern CLiveUI g_cLiveUI;
 extern CLiveUI* g_pLiveUI;
+
+extern CArmeniacaExport g_cArmeniacaExport;
 
 #endif // !__LIVEUI_H_
 

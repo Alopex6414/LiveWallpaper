@@ -81,6 +81,45 @@ VOID CLiveTabConfig::LiveTabConfigAnalizeVideoAddress(const char* szAddress)
 }
 
 //------------------------------------------------------------------
+// @Function:	 LiveTabConfigOpenFileButtonClick()
+// @Purpose: CLiveTabConfig打开文件
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+VOID CLiveTabConfig::LiveTabConfigOpenFileButtonClick()
+{
+	OPENFILENAMEA sInfo = { 0 };
+	char chArr[MAX_PATH] = { 0 };
+
+	sInfo.lStructSize = sizeof(OPENFILENAMEA);	//结构体大小
+	sInfo.lpstrFilter = "所有文件\0*.*\0"\
+						"MP4文件\0*.mp4\0"\
+						"MOV文件\0*.mov\0"\
+						"MKV文件\0*.mkv\0"\
+						"WMV文件\0*.wmv\0"\
+						"AVI文件\0*.avi\0"\
+						"FLV文件\0*.flv\0"\
+						"RMVB文件\0*.rmvb\0";
+	sInfo.nFilterIndex = 1;
+	sInfo.lpstrFile = chArr;
+	sInfo.lpstrFile[0] = '\0';
+	sInfo.nMaxFile = MAX_PATH;
+	sInfo.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST;
+
+	BOOL bRet = FALSE;
+
+	bRet = GetOpenFileNameA(&sInfo);
+	if (bRet)
+	{
+		memset(m_chLiveCoreVideoAddress, 0, MAX_PATH);
+		memcpy_s(m_chLiveCoreVideoAddress, MAX_PATH, chArr, MAX_PATH);
+		LiveTabConfigAnalizeVideoAddress(m_chLiveCoreVideoAddress);
+	}
+
+}
+
+//------------------------------------------------------------------
 // @Function:	 LiveTabConfigRepeatButtonClick()
 // @Purpose: CLiveTabConfig恢复默认设置
 // @Since: v1.00a
