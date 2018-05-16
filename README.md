@@ -20,4 +20,5 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
 
 这个解决方案是基于C/C++编写的Win32和DirectX工程. 解决方案分成5个工程，分别为LiveWallpaper, LiveWallpaperUI, LiveWallpaperCore, LiveWallpaperReStart, LiveWallpaperCleanUp. LiveWallpaper工程是整个动态壁纸用户可以直接打开的应用程序; LiveWallpaperUI工程是动态壁纸的UI界面; LiveWallpaperCore工程是动态壁纸的桌面渲染程序; LiveWallpaperReStart工程是帮助重启LiveWallpaperCore应用程序; LiveWallpaperCleanUp工程是用于清理解压后的默认视频.
 
-  * ### LiveWallpaper Project
+  * ### `LiveWallpaper`
+    * #### `LiveWallpaper` is used to start the `LiveWallpaperUI` application.
