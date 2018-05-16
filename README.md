@@ -6,6 +6,7 @@ This Program is LiveWallpaper Project.
 Cette solution est le projet "LiveWallpaper".     
 А это решение-проект "ливевальлпапер".  
 
+## Icon
 ![](https://github.com/Alopex6414/LiveWallpaper/raw/master/Release/frame/Wait/Sakura.png)
 
 ## Simple
