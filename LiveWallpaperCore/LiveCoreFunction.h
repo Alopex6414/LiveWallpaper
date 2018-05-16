@@ -39,6 +39,7 @@ extern char g_chLiveCoreVideoAddress[MAX_PATH];
 
 //Function Declaration
 extern void AnalyzeConfigFile();
+extern void RecordConfigFile();
 extern BOOL LiveRunPreProcess();
 extern BOOL AnalyzeVideoInfo(HWND hWnd, const char* pVideoPath, int* pWidth, int* pHeight, int* pFreq);
 extern BOOL IsProcessExist(const WCHAR* strFilename);

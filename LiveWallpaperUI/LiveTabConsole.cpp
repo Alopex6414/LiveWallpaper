@@ -68,6 +68,27 @@ VOID CLiveTabConsole::LiveTabConsoleStartButtonClick()
 //------------------------------------------------------------------
 VOID CLiveTabConsole::LiveTabConsoleStopButtonClick()
 {
+	char chArrFile[MAX_PATH] = { 0 };
+	char* pTemp = NULL;
+
+	memset(chArrFile, 0, MAX_PATH);
+	GetModuleFileNameA(NULL, chArrFile, MAX_PATH);
+
+	pTemp = strrchr(chArrFile, '\\');
+	if (pTemp != NULL)
+	{
+		*pTemp = '\0';
+	}
+
+	strcat_s(chArrFile, "\\config\\LiveCore.cfg");
+
+	char chArrValue[MAX_PATH] = { 0 };
+	int hWnd = 0;
+
+	memset(chArrValue, 0, MAX_PATH);
+	GetPrivateProfileStringA("LIVECOREWINDOW", "LiveCore_Window_Handle", "0", chArrValue, MAX_PATH, chArrFile);
+	hWnd = atoi(chArrValue);
+	::PostMessage((HWND)hWnd, WM_CLOSE, 0, 0);
 
 }
 

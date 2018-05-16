@@ -10,6 +10,8 @@
 * @date		2018-3-10
 */
 #include "LiveCoreFunction.h"
+#include "WinProcess.h"
+#include "WinUtilities.h"
 
 #include "PlumFile.h"
 #include "PlumIni.h"
@@ -96,6 +98,37 @@ void AnalyzeConfigFile()
 	memset(chArray, 0, MAX_PATH);
 	GetPrivateProfileStringA("LIVECOREVIDEOADDRESS", "LiveCore_Video_Address", 0, chArray, MAX_PATH, chFilePath);
 	memcpy_s(g_chLiveCoreVideoAddress, MAX_PATH, chArray, MAX_PATH);	// LiveCore动态壁纸视频地址
+
+
+	SAFE_DELETE(pPlumFile);
+}
+
+//------------------------------------------------------------------
+// @Function:	 RecordConfigFile()
+// @Purpose: LiveWallpaperCore记录配置文件
+// @Since: v1.00a
+// @Para: None
+// @Return: None
+//------------------------------------------------------------------
+void RecordConfigFile()
+{
+	char chFilePath[MAX_PATH] = { 0 };
+	char* pTemp = NULL;
+
+	// 分析文件路径
+	CPlumFile* pPlumFile = NULL;
+	pPlumFile = new CPlumFile;
+	pPlumFile->PlumFileGetModuleFileNameA(chFilePath, MAX_PATH);
+
+	pTemp = strrchr(chFilePath, '\\');
+	if (pTemp) *pTemp = '\0';
+	strcat_s(chFilePath, "\\config\\LiveCore.cfg");
+
+	char chArrValue[MAX_PATH] = { 0 };
+
+	memset(chArrValue, 0, MAX_PATH);
+	itoa((int)g_hWnd, chArrValue, 10);
+	WritePrivateProfileStringA("LIVECOREWINDOW", "LiveCore_Window_Handle", chArrValue, chFilePath);
 
 
 	SAFE_DELETE(pPlumFile);

@@ -99,6 +99,9 @@ BOOL LiveWallpaperInit()
 	g_pPlumLogMain.PlumLogWriteExtend(__FILE__, __LINE__, "Succeed Analyze Config File. Para:LiveCoreMode=%d, Para:LiveCoreShowGraphics=%d, Para:LiveCoreShowGraphicsFont=%d, "\
 		"Para:LiveCoreWallpaperMode=%d, Para:LiveCoreWallpaperAudioMode=%d, Para:LiveCoreLogProcess=%d.\n", g_nLiveCoreMode, g_nLiveCoreShowGraphics, g_nLiveCoreShowGraphicsFont, g_nLiveCoreWallpaperMode, g_nLiveCoreWallpaperAudioMode, g_nLiveCoreLogProcess);
 
+	// 记录配置文件
+	RecordConfigFile();
+
 	// 检测模块进程是否存在
 	if (g_nLiveCoreMode == 0)
 	{
