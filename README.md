@@ -1,13 +1,10 @@
-# LiveWallpaper
+# LiveWallpaper ![](https://github.com/Alopex6414/LiveWallpaper/raw/master/Release/frame/Wait/Sakura.png)
 This Program is LiveWallpaper Project.  
 这个解决方案是"LiveWallpaper"项目。   
 這個解決方案是"LiveWallpaper"項目。      
 この解決策は「LiveWallpaper」プロジェクトです。    
 Cette solution est le projet "LiveWallpaper".     
 А это решение-проект "ливевальлпапер".  
-
-## Sakura
-![](https://github.com/Alopex6414/LiveWallpaper/raw/master/Release/frame/Wait/Sakura.png)
 
 ## Simple
 Do you stare at a boring desk every day? Or do we want our desktop to have a "Live" feeling? If you have such an idea, you might as well (laugh). Because of the exposure to some 3D rendering, I wonder if we can project video onto the desktop, so that our desktop becomes more Live (laugh). That's the idea, so I'd like to make a dynamic wallpaper program instead of a traditional desktop.
