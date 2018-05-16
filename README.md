@@ -1,6 +1,14 @@
 # LiveWallpaper
 This Program is LiveWallpaper Project.
 
+Do you stare at a boring desk every day? Or do we want our desktop to have a "Live" feeling? If you have such an idea, you might as well (laugh). Because of the exposure to some 3D rendering, I wonder if we can project video onto the desktop, so that our desktop becomes more Live (laugh). That's the idea, so I'd like to make a dynamic wallpaper program instead of a traditional desktop.
+
+
+The LiveWallpaper project lasted about 3 months, right? If I remember correctly. Still, due to various pressures, work is really different from going to college. There are many things to learn, and there are very few free time. Maybe you can just think about something quietly after work every night... Well, how long does it take to make your first game? (laugh) You don't have to think so much...
+
+
+Em... I think LiveWallpaper still has a lot of shortcomings, such as high CPU usage, unsynchronized audio and video, and sound decoding, which can't adapt to all video format... But I think that as long as it brings some happiness, it's not a big deal, is it?
+
 ### Abstract
 This solution is based on the C/C + + Win32 and DirectX projects. The solution is divided into five projects, respectively LiveWallpaper, LiveWallpaperUI, LiveWallpaperCore, LiveWallpaperReStart, LiveWallpaperCleanUp. LiveWallpaper engineering is the application of the dynamic wallpaper users can directly open the program; LiveWallpaperUI project is the UI interface of dynamic wallpaper. LiveWallpaperCore project is a desktop rendering program for dynamic wallpaper. LiveWallpaperReStart project is to help restart the LiveWallpaperCore application; The LiveWallpaperCleanUp project is the default video for cleaning up the decompression.
 
