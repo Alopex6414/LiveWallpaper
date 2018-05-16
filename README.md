@@ -1,6 +1,7 @@
 # LiveWallpaper
 This Program is LiveWallpaper Project.
 
+### Simple
 Do you stare at a boring desk every day? Or do we want our desktop to have a "Live" feeling? If you have such an idea, you might as well (laugh). Because of the exposure to some 3D rendering, I wonder if we can project video onto the desktop, so that our desktop becomes more Live (laugh). That's the idea, so I'd like to make a dynamic wallpaper program instead of a traditional desktop.
 
 
