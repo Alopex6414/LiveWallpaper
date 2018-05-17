@@ -30,3 +30,6 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
     LiveWallpaper应用程序是作为用户进入动态壁纸应用的主入口，用于启用LiveWallpaperUI应用程序。在LiveWallpaperUI应用程序启动之后，LiveWallpaper会自动关闭当前进程。
     
     LiveWallpaperアプリケーションは,ユーザーとしての動的な壁紙アプリケーションの主な入口であり,LiveWallpaperUIアプリケーションを起動するために用いられる。LiveWallpaperUIアプリケーションが開始された後に,LiveWallpaperは,現在のプロセスを自動的に停止させる。
+
+  * ### LiveWallpaperUI
+    * #### *`LiveWallpaperUI` is the user UI part of the dynamic wallpaper.*
