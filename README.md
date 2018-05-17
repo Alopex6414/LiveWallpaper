@@ -1,6 +1,6 @@
 # LiveWallpaper
 This Program is LiveWallpaper Project.(English)  
-这个解决方案是"LiveWallpaper"项目。(简体中文)   
+这个解决方案是"LiveWallpaper"项目。(简体中文)  
 這個解決方案是"LiveWallpaper"項目。(繁體中文)  
 この解決策は「LiveWallpaper」プロジェクトです。(日本语)    
 Cette solution est le projet "LiveWallpaper".(français)     
