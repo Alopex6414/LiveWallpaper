@@ -1,10 +1,10 @@
 # LiveWallpaper
-This Program is LiveWallpaper Project.  
-这个解决方案是"LiveWallpaper"项目。   
-這個解決方案是"LiveWallpaper"項目。      
-この解決策は「LiveWallpaper」プロジェクトです。    
-Cette solution est le projet "LiveWallpaper".     
-А это решение-проект "ливевальлпапер".  
+This Program is LiveWallpaper Project.(English)  
+这个解决方案是"LiveWallpaper"项目。(简体中文)   
+這個解決方案是"LiveWallpaper"項目。(繁體中文)      
+この解決策は「LiveWallpaper」プロジェクトです。(日本语)    
+Cette solution est le projet "LiveWallpaper".(français)     
+А это решение-проект "ливевальлпапер".(русский)  
 
 ## Icon
 ![](https://github.com/Alopex6414/LiveWallpaper/raw/master/Release/frame/Wait/Sakura.png)
