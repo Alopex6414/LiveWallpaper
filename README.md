@@ -33,3 +33,4 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
 
   * ### LiveWallpaperUI
     * #### *`LiveWallpaperUI` is the user UI part of the dynamic wallpaper.*
+    * #### *`LiveWallpaperUI` can implement the `LiveWallpaperCore` application. The configuration of the CFG file.*
