@@ -32,5 +32,5 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
     LiveWallpaperアプリケーションは,ユーザーとしての動的な壁紙アプリケーションの主な入口であり,LiveWallpaperUIアプリケーションを起動するために用いられる。LiveWallpaperUIアプリケーションが開始された後に,LiveWallpaperは,現在のプロセスを自動的に停止させる。
 
   * ### LiveWallpaperUI
-    * #### *`LiveWallpaperUI` is the user UI part of the dynamic wallpaper.*
-    * #### *`LiveWallpaperUI` can implement the `LiveWallpaperCore` application. The configuration of the CFG file.*
+    * #### *`LiveWallpaperUI` is the user UI part of the dynamic wallpaper.*  
+    * #### *`LiveWallpaperUI` can implement the `LiveWallpaperCore` application. The configuration of the CFG file.*
