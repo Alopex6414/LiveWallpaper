@@ -34,4 +34,6 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
   * ### LiveWallpaperUI
     * #### *`LiveWallpaperUI` is the user UI part of the dynamic wallpaper.*  
     * #### *`LiveWallpaperUI` can implement the `LiveWallpaperCore` application. The configuration of the CFG file.*    
-    * #### *`LiveWallpaperUI` controls the playback of desktop dynamic wallpaper.*
+    * #### *`LiveWallpaperUI` controls the playback of desktop dynamic wallpaper.*    
+    
+    LiveWallpaperUI是动态壁纸的用户界面部分。LiveWallpaperUI可以控制LiveWallpaperCore应用程序的LiveCore.cfg配置文件，并且可以同时对动态视频桌面进行播放控制。
