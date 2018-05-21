@@ -44,4 +44,6 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
     * #### *The `LiveWallpaperCore` application is mainly used as the core of the dynamic wallpaper, which is used to decode and render the video files.*  
     * #### *The `LiveWallpaperCore` is mainly divided into three parts: video decoding part, audio decoding part, display refresh rendering part.*    
     * #### *Video decoding part mainly decodes video files into YUV video format; The audio decoding part mainly decodes the audio part of video files; The refresh rendering part is to draw the decoded YUV video frame onto the screen. Video decoding part adopts `ffmpeg library` for video decoding. The audio decoding part adopts `SDL library` for decoding. The refresh rendering part USES `Direct3D Surface` for more line rendering, which makes the screen update smoother.*      
-    * #### *At the same time, `LiveWallpaperCore` can also decode the default video of the packet and render it to the screen window.*
+    * #### *At the same time, `LiveWallpaperCore` can also decode the default video of the packet and render it to the screen window.*  
+    
+    LiveWallpaperCore应用程序主要是作为动态壁纸的核心，用于对视频文件进行解码并进行渲染。LiveWallpaperCore主要分为3个部分：视频解码部分、音频解码部分、显示刷新渲染部分。视频解码部分主要是对视频文件进行解码成YUV视频格式；音频解码部分主要是对视频文件的音频部分进行解码；刷新渲染部分是将解码产生的YUV视频帧绘制到屏幕上。视频解码部分采用了ffmpeg库进行视频解码；音频解码部分采用SDL库进行解码；刷新渲染部分采用了Direct3D Surface进行更行渲染，使得画面更新比较流畅。同时LiveWallpaperCore也可以对实现封包的默认视频进行解码，并渲染到屏幕窗口。
