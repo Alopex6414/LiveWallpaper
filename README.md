@@ -50,5 +50,9 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
     
     「LiveWallpaperCore ]アプリケーション主動態壁紙の核心に使用、動画ファイルをレンダリングしてデコード。ビデオデコード部分は主に、動画ファイルをデコード割YUVビデオフォーマット；オーディオデコード部分は主に、ビデオファイルのオーディオ部分をデコード；刷新レンダリング部分はをデコード発生フレーム描画YUV動画スクリーンに。ビデオデコード部分を採用したffmpeg库では、ビデオデコード；オーディオデコード部分を採用しSDL庫で復号化し、刷新を採用したSurface Direct3Dレンダリング部分をもっといいレンダリング、更新が流暢な画面。同時に「LiveWallpaperCore」も実現パケットのデフォルトの動画で復号化し、スクリーンをレンダリング窓口。  
     
-  * ### LiveWallpaperReStart
+  * ### LiveWallpaperReStart    
+    * #### *The `LiveWallpaperReStart` application is the process used to restart the dynamic wallpaper.*
     
+    LiveWallpaperReStart应用程序是用来对动态壁纸重新启动的进程。
+    
+    LiveWallpaperReStartアプリケーションは用いて動態壁紙再起動のプロセス。
