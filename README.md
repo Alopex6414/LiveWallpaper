@@ -60,6 +60,6 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
   * ### LiveWallpaperCleanUp    
     * #### *The `LiveWallpaperCleanUp` application is used to clean up the video after the video is removed in the default video mode.* 
     
-    LiveWallpaperCleanUp应用程序是用来对默认视频模式下拆包之后的视频在播放完成之后的清理。
+    LiveWallpaperCleanUp应用程序是用来对默认视频模式下拆包之后的视频在播放完成之后的清理。  
     
-    LiveWallpaperCleanUpアプリケーションは、デフォルトのモードにビデオをはずしてパック後の動画放送完成した後の整理。
+    LiveWallpaperCleanUpアプリケーションは、デフォルトのモードにビデオをはずしてパック後の動画放送完成した後の整理。  
