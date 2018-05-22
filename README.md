@@ -56,3 +56,10 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
     LiveWallpaperReStart应用程序是用来对动态壁纸重新启动的进程。
     
     LiveWallpaperReStartアプリケーションは用いて動態壁紙再起動のプロセス。
+
+  * ### LiveWallpaperCleanUp
+    * #### *The `LiveWallpaperCleanUp` application is used to clean up the video after the video is removed in the default video mode.*
+    
+    LiveWallpaperCleanUp应用程序是用来对默认视频模式下拆包之后的视频在播放完成之后的清理。
+    
+    LiveWallpaperCleanUpアプリケーションは、デフォルトのモードにビデオをはずしてパック後の動画放送完成した後の整理。
