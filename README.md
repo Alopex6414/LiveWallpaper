@@ -64,4 +64,4 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
     
     LiveWallpaperCleanUpアプリケーションは、デフォルトのモードにビデオをはずしてパック後の動画放送完成した後の整理。  
     
-    
+## Effect
