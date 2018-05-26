@@ -68,3 +68,6 @@ This solution is based on the C/C + + Win32 and DirectX projects. The solution i
   * ### *Essential*
     * #### *The following picture shows how LiveWallpaper works and configuring it.*
     ![](https://github.com/Alopex6414/LiveWallpaper/raw/master/Gif/Animation.gif)
+  * ### *Advanced*
+    * #### *The following picture shows how LiveWallpaper works and configuring it.*
+    ![](https://github.com/Alopex6414/LiveWallpaper/raw/master/Gif/Animation1.gif)
